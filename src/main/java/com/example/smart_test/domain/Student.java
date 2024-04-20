@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Ученик")
 @Data
@@ -15,14 +17,14 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "идентификатор_ученика")
     private Long id;
-    @Column(name = "e-mail_ученика")
+    @Column(name = "email_ученика")
     private String email;
     @ManyToOne
     @Column(name = "идентификатор_класс")
     private StudentClass studentClass;
     @OneToMany
     @Column(name = "идентификатор_результаты_теста")
-    private TestResults testResults;
+    private List<TestResults> testResultsList;
     @Column(name = "имя_ученика")
     private String name;
     @Column(name = "логин_ученика")

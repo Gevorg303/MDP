@@ -1,4 +1,33 @@
 package com.example.smart_test.domain;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Entity
+@Table(name = "Результаты_теста")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TestResults {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "идентификатор_результаты_теста")
+    private Long id;
+    @ManyToOne
+    @Column(name = "идентификатор_задания")
+    private Task task;
+    @ManyToOne
+    @Column(name = "идентификатор_индикатор")
+    private Indicator indicator;
+    @ManyToOne
+    @Column(name = "идентификатор_тест")
+    private Test test;
+    @ManyToOne
+    @Column(name = "идентификатор_ученик")
+    private Student student;
+    @Column(name = "результат_индикатора")
+    private boolean resultOfTheIndicator;
 }
