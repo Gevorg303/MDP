@@ -23,9 +23,9 @@ public class StudentClass {
     @OneToMany
     @Column(name = "идентификатор_ученик")
     private Student student;
-    @OneToMany
-    @Column(name = "идентификатор_учитель-класс")
-    private TeacherClass teacherClass;
+//    @ManyToMany(mappedBy = "TeacherClass")
+//    @Column(name = "идентификатор_учитель_класс")
+//    private TeacherClass teacherClass;
     @Column(name = "номер_учреждения")
     private String numberOfInstitution;
 }
