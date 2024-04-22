@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Тест")
+@Table(name = "тест")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,17 +25,11 @@ public class Test {
     private LocalDateTime closingDateAndTime;
     @Column(name = "дата_и_время_открытия")
     private LocalDateTime openingDateAndTime;
-    @OneToMany
-    @Column(name = "идентификатор_задание")
-    private List<Task> taskList;
-    @OneToMany
-    @Column(name = "идентификатор_результаты_теста")
-    private List<TestResults> testResultsList;
     @ManyToOne
-    @Column(name = "идентификатор_тема")
+    @JoinColumn(name = "идентификатор_тема")
     private Theme theme;
     @ManyToOne
-    @Column(name = "идентификатор_тип_теста")
+    @JoinColumn(name = "идентификатор_тип_теста")
     private TypeTest typeTest;
     @Column(name = "количество_попыток_прохождения")
     private int numberOfAttemptsToPass;

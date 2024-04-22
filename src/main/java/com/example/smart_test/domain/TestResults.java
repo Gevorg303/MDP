@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "Результаты_теста")
+@Table(name = "результаты_теста")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,16 +17,16 @@ public class TestResults {
     @Column(name = "идентификатор_результаты_теста")
     private Long id;
     @ManyToOne
-    @Column(name = "идентификатор_задания")
+    @JoinColumn(name = "идентификатор_задания")
     private Task task;
     @ManyToOne
-    @Column(name = "идентификатор_индикатор")
+    @JoinColumn(name = "идентификатор_индикатор")
     private Indicator indicator;
     @ManyToOne
-    @Column(name = "идентификатор_тест")
+    @JoinColumn(name = "идентификатор_тест")
     private Test test;
     @ManyToOne
-    @Column(name = "идентификатор_ученик")
+    @JoinColumn(name = "идентификатор_ученик")
     private Student student;
     @Column(name = "результат_индикатора")
     private boolean resultOfTheIndicator;

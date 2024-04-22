@@ -6,22 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "вариант_ответа")
+@Table(name = "задание_по_индикатору")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseOption {
+public class TaskOfIndicator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_вариант_ответа")
+    @Column(name = "идентификатор_задание_по_индикато")
     private Long id;
-    @Column(name = "вопрос")
-    private String question;
     @ManyToOne
     @JoinColumn(name = "идентификатор_задание")
     private Task task;
-    @Column(name = "ответ")
-    private String response;
-    @Column(name = "оценка_за_ответ")
-    private String evaluationResponse;
+    @ManyToOne
+    @JoinColumn(name = "идентификатор_индикатор")
+    private Indicator indicator;
 }

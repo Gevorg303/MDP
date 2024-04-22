@@ -8,23 +8,17 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Индикатор")
+@Table(name = "индикатор")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Indicator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_индикатора")
+    @Column(name = "идентификатор_индикатор")
     private Long id;
-//    @ManyToMany
-//    @Column(name = "")
-//    private Task task;
-    @OneToMany
-    @Column(name = "идентификатор_результаты_теста")
-    private List<TestResults> testResultsList;
     @ManyToOne
-    @Column(name = "идентификатор_тема")
+    @JoinColumn(name = "идентификатор_тема")
     private Theme theme;
     @Column(name = "наименование_индикатора")
     private String nameOfTheIndicator;

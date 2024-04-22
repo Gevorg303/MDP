@@ -6,15 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "тип_теста")
+@Table(name = "предмет")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeTest {
+public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_тип_теста")
+    @Column(name = "идентификатор_предмет")
     private Long id;
-    @Column(name = "наименование_типа_теста")
-    private String nameOfTestType;
+    @Column(name = "название_предмета")
+    private String subjectName;
+    @Column(name = "описание_предмета")
+    private String description;
 }

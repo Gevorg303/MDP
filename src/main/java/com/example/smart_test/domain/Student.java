@@ -8,23 +8,20 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "Ученик")
+@Table(name = "ученик")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_ученика")
+    @Column(name = "идентификатор_ученик")
     private Long id;
     @Column(name = "email_ученика")
     private String email;
     @ManyToOne
-    @Column(name = "идентификатор_класс")
+    @JoinColumn(name = "идентификатор_класс")
     private StudentClass studentClass;
-    @OneToMany
-    @Column(name = "идентификатор_результаты_теста")
-    private List<TestResults> testResultsList;
     @Column(name = "имя_ученика")
     private String name;
     @Column(name = "логин_ученика")

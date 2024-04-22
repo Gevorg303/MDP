@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Класс")
+@Table(name = "класс")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,14 +18,8 @@ public class StudentClass {
     @Column(name = "буквенное_обозначение")
     private String letterDesignation;
     @ManyToOne
-    @Column(name = "идентификатор_образовательное_уч")
+    @JoinColumn(name = "идентификатор_образовательное_уч")
     private EducationalInstitution educationalInstitution;
-    @OneToMany
-    @Column(name = "идентификатор_ученик")
-    private Student student;
-//    @ManyToMany(mappedBy = "TeacherClass")
-//    @Column(name = "идентификатор_учитель_класс")
-//    private TeacherClass teacherClass;
     @Column(name = "номер_учреждения")
     private String numberOfInstitution;
 }

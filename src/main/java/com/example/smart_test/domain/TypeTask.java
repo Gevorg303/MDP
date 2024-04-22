@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Тип_задания")
+@Table(name = "тип_задания")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +15,6 @@ public class TypeTask {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "идентификатор_тип_задания")
     private Long id;
-    @Column(name = "наименование_типа_задания")
+    @Column(name = "наименование_тип_задания")
     private String taskTypeName;
 }
