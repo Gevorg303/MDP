@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -35,11 +37,25 @@ public class EducationalInstitutionServiceImpl implements EducationalInstitution
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void deleteEducationalInstitutionDto(Long id) {
-        if (findEducationalInstitutionById(id)) {
-            educationalInstitutionRepository.deleteById(id);
+    public void deleteEducationalInstitutionDto(EducationalInstitutionDto dto) {
+        if (findEducationalInstitutionById(dto.getId())) {
+            EducationalInstitution educationalInstitution = educationalInstitutionMapperInterface.toEntity(dto);
+            educationalInstitutionRepository.delete(educationalInstitution);
         } else {
-            log.error("Учреждение с идентификатором " + id + " не существует");
+            log.error("Учреждение с идентификатором " + dto.getId() + " не существует");
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<EducationalInstitutionDto> getAllEducationalInstitutions() {
+        try {
+            List<EducationalInstitution> institutions = educationalInstitutionRepository.findAll();
+            return institutions.stream()
+                    .map(educationalInstitutionMapperInterface::toDTO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new RuntimeException("Ошибка при получении всех учреждений: " + e.getMessage(), e);
         }
     }
 

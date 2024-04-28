@@ -22,4 +22,5 @@ public class EducationalInstitutionMapperImpl implements EducationalInstitutionM
         entity.setNameOfTheInstitution(dto.getNameOfTheInstitution());
         return entity;
     }
+
 }
