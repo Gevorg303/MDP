@@ -1,0 +1,31 @@
+package com.example.smart_test.controller;
+
+import com.example.smart_test.dto.StudentClassDto;
+import com.example.smart_test.dto.StudentDto;
+import com.example.smart_test.service.api.StudentClassServiceInterface;
+import com.example.smart_test.service.api.StudentServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/student-class")
+public class StudentClassController {
+    @Autowired
+    private StudentClassServiceInterface serviceInterface;
+    @PostMapping("/add")
+    public StudentClassDto addStudentClass(@RequestBody StudentClassDto dto) {
+        return serviceInterface.addStudentClassDto(dto);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteStudentClass(@RequestBody StudentClassDto dto) {
+        serviceInterface.deleteStudentClassDto(dto);
+    }
+
+    @GetMapping("/all")
+    public List<StudentClassDto> getAllStudentClass() {
+        return serviceInterface.getAllStudentClass();
+    }
+}
