@@ -1,0 +1,17 @@
+JSON для добавления ученика
+{
+  "email": "example@example.com",
+  "studentClass": {
+    "id": 1,
+    "letterDesignation": "A",
+    "educationalInstitution": {
+      "id": 1,
+      "address": "ул. Ленина, д. 10",
+      "nameOfTheInstitution": "Школа №1"
+    },
+    "numberOfInstitution": "123"
+  },
+  "name": "Иван",
+  "patronymic": "Иванович",
+  "surname": "Иванов"
+}

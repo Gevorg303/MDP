@@ -18,19 +18,17 @@ public class EducationalInstitutionController {
     private EducationalInstitutionServiceInterface educationalInstitutionService;
 
     @PostMapping("/add")
-    public ResponseEntity<EducationalInstitutionDto> addEducationalInstitution(@RequestBody EducationalInstitutionDto dto) {
-        EducationalInstitutionDto addedInstitution = educationalInstitutionService.addEducationalInstitutionDto(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(addedInstitution);
+    public EducationalInstitutionDto addEducationalInstitution(@RequestBody EducationalInstitutionDto educationalInstitutionDto) {
+        return educationalInstitutionService.addEducationalInstitutionDto(educationalInstitutionDto);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteEducationalInstitution(@RequestBody EducationalInstitutionDto dto) {
-        educationalInstitutionService.deleteEducationalInstitutionDto(dto);
-        return ResponseEntity.noContent().build();
+    public void deleteEducationalInstitution(@RequestBody EducationalInstitutionDto educationalInstitutionDto) {
+        educationalInstitutionService.deleteEducationalInstitutionDto(educationalInstitutionDto);
     }
+
     @GetMapping("/all")
-    public ResponseEntity<List<EducationalInstitutionDto>> getAllEducationalInstitutions() {
-        List<EducationalInstitutionDto> institutions = educationalInstitutionService.getAllEducationalInstitutions();
-        return ResponseEntity.ok().body(institutions);
+    public List<EducationalInstitutionDto> getAllEducationalInstitutions() {
+        return educationalInstitutionService.getAllEducationalInstitutions();
     }
 }
