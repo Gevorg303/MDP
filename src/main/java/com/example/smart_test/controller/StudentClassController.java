@@ -1,9 +1,7 @@
 package com.example.smart_test.controller;
 
 import com.example.smart_test.dto.StudentClassDto;
-import com.example.smart_test.dto.StudentDto;
 import com.example.smart_test.service.api.StudentClassServiceInterface;
-import com.example.smart_test.service.api.StudentServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
