@@ -32,4 +32,7 @@ public class Student {
     private String password;
     @Column(name = "фамилия_ученика")
     private String surname;
+    @ManyToOne
+    @JoinColumn(name = "идентификатор_образовательное_уч")
+    private EducationalInstitution educationalInstitution;
 }

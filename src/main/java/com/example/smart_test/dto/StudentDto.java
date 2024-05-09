@@ -1,5 +1,6 @@
 package com.example.smart_test.dto;
 
+import com.example.smart_test.domain.EducationalInstitution;
 import com.example.smart_test.domain.StudentClass;
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class StudentDto {
     private String patronymic;
     private String password;
     private String surname;
+    private EducationalInstitution educationalInstitution;
 }

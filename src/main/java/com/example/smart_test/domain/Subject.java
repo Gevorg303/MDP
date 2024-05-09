@@ -19,4 +19,7 @@ public class Subject {
     private String subjectName;
     @Column(name = "описание_предмета")
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "идентификатор_учитель_класс")
+    private TeacherClass teacherClass;
 }

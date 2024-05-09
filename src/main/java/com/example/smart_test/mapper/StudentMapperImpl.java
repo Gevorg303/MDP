@@ -18,6 +18,7 @@ public class StudentMapperImpl implements StudentMapperInterface {
         dto.setPatronymic(entity.getPatronymic());
         dto.setPassword(entity.getPassword());
         dto.setSurname(entity.getSurname());
+        dto.setEducationalInstitution(entity.getEducationalInstitution());
         return dto;
     }
 
@@ -32,6 +33,7 @@ public class StudentMapperImpl implements StudentMapperInterface {
         entity.setPatronymic(dto.getPatronymic());
         entity.setPassword(dto.getPassword());
         entity.setSurname(dto.getSurname());
+        entity.setEducationalInstitution(dto.getEducationalInstitution());
         return entity;
     }
 }

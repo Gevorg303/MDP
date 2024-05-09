@@ -6,20 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "класс")
+@Table(name = "учитель_образовательное_учрежден")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentClass {
+public class TeacherEducationalInstitution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_класс")
+    @Column(name = "идентификатор_учитель_образовате")
     private Long id;
-    @Column(name = "буквенное_обозначение")
-    private String letterDesignation;
+
+    @ManyToOne
+    @JoinColumn(name = "идентификатор_учитель")
+    private Teacher teacher;
+
     @ManyToOne
     @JoinColumn(name = "идентификатор_образовательное_уч")
     private EducationalInstitution educationalInstitution;
-    @Column(name = "номер_класса")
-    private String numberOfInstitution;
 }
