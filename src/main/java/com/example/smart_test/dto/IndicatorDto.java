@@ -4,6 +4,7 @@ import com.example.smart_test.domain.Theme;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+@Data
 public class IndicatorDto {
     private Long id;
     private Theme theme;

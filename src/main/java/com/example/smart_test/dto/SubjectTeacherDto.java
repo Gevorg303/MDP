@@ -5,6 +5,7 @@ import com.example.smart_test.domain.Teacher;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+@Data
 public class SubjectTeacherDto {
     private Long id;
     private Subject subject;

@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+@Data
 public class TestDto {
     private Long id;
     private LocalTime passageTime;

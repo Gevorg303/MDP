@@ -7,6 +7,7 @@ import com.example.smart_test.domain.Test;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+@Data
 public class TestResultsDto {
     private Long id;
     private Task task;
