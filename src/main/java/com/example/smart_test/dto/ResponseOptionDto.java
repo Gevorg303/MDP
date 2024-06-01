@@ -1,11 +1,10 @@
 package com.example.smart_test.dto;
 
 import com.example.smart_test.domain.Task;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
-public class ResposeOptionDto {
+public class ResponseOptionDto {
     private Long id;
     private String question;
     private Task task;
