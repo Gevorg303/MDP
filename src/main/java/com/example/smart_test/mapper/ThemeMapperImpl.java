@@ -8,19 +8,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class ThemeMapperImpl implements ThemeMapperInterface {
     @Override
-    public ThemeDto toDto(Theme entity){
+    public ThemeDto toDTO(Theme entity) {
         ThemeDto dto = new ThemeDto();
         dto.setId(entity.getId());
-        dto.setSubject(entity.getSubject());
         dto.setThemeName(entity.getThemeName());
+        dto.setSubject(entity.getSubject());
         return dto;
     }
+
     @Override
-    public  Theme toEntity(ThemeDto dto) {
+    public Theme toEntity(ThemeDto dto) {
         Theme entity = new Theme();
         entity.setId(dto.getId());
-        entity.setSubject(dto.getSubject());
         entity.setThemeName(dto.getThemeName());
+        entity.setSubject(dto.getSubject());
         return entity;
     }
 }

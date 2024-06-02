@@ -21,9 +21,9 @@ public class SubjectMapperImpl implements SubjectMapperInterface {
     public Subject toEntity(SubjectDto dto) {
         Subject entity = new Subject();
         entity.setId(dto.getId());
-        entity.setSubjectName(entity.getSubjectName());
-        entity.setDescription(entity.getDescription());
-        entity.setTeacherClass(entity.getTeacherClass());
+        entity.setSubjectName(dto.getSubjectName());
+        entity.setDescription(dto.getDescription());
+        entity.setTeacherClass(dto.getTeacherClass());
         return entity;
     }
 }

@@ -4,6 +4,6 @@ import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.ThemeDto;
 
 public interface ThemeMapperInterface {
-    public ThemeDto toDto(Theme entity);
-    public  Theme toEntity(ThemeDto dto);
+    ThemeDto toDTO(Theme entity);
+    Theme toEntity(ThemeDto dto);
 }

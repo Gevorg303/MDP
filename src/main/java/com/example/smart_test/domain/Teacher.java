@@ -3,6 +3,7 @@ package com.example.smart_test.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -27,6 +28,7 @@ public class Teacher {
     private String password;
     @Column(name = "фамилия_учителя")
     private String surname;
+    @Getter
     @Column(name = "супер_пользователь")
     private boolean superUser;
 }
