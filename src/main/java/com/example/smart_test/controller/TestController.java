@@ -13,8 +13,7 @@ import java.util.List;
 public class TestController {
     @Autowired
     private TestServiceInterface testService;
-
-    @PostMapping("/add")//не работает
+    @PostMapping("/add")
     public TestDto addTest(@RequestBody TestDto testDto){
         return testService.addTestDto(testDto);
     }

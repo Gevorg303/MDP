@@ -12,7 +12,7 @@ import java.util.List;
 public class ThemeController {
     @Autowired
     private ThemeServiceInterface themeService;
-    @PostMapping("/add")//не работает
+    @PostMapping("/add")
     public ThemeDto addTheme(@RequestBody ThemeDto themeDto){
         return themeService.addThemeDto(themeDto);
     }

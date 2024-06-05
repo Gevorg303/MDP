@@ -13,7 +13,7 @@ import java.util.List;
 public class SubjectController {
     @Autowired
     private SubjectServiceInterface subjectService;
-    @PostMapping("/add")//не работает
+    @PostMapping("/add")
     public SubjectDto addSubjectDto(@RequestBody SubjectDto subjectDto){
         return subjectService.addSubjectDto(subjectDto);
     }
