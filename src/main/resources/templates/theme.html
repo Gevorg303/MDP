@@ -5,9 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theme</title>
     <link rel="stylesheet" href="../static/css/theme.css">
+    <link rel="stylesheet" href="../static/css/theme_modal.css">
+
 </head>
 <body>
 <div class="container" id="subjects-container"></div>
 <script src="../js/theme.js"></script>
+<button id="openModal">Редактировать темы</button>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <h2>Выберите действие и введите название теста:</h2>
+        <label>
+            <input type="radio" name="action" value="delete"> Удалить тест
+        </label>
+        <label>
+            <input type="radio" name="action" value="add"> Добавить тест
+        </label>
+        <br>
+        <input type="text" id="itemName" placeholder="Название теста">
+        <br>
+        <button id="confirmAction">Подтвердить</button>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById('myModal');
+    var openModalBtn = document.getElementById('openModal');
+    var confirmActionBtn = document.getElementById('confirmAction');
+    var action;
+    var itemNameInput = document.getElementById('itemName');
+
+    openModalBtn.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    confirmActionBtn.onclick = function() {
+        var actionRadios = document.getElementsByName('action');
+        for (var i = 0; i < actionRadios.length; i++) {
+            if (actionRadios[i].checked) {
+                action = actionRadios[i].value;
+                break;
+            }
+        }
+
+        var itemName = itemNameInput.value;
+
+        if (action === 'delete') {
+            // Действия для удаления предмета
+            console.log('Удалить предмет: ' + itemName);
+        } else if (action === 'add') {
+            // Действия для добавления предмета
+            console.log('Добавить предмет: ' + itemName);
+        }
+
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
 </body>
 </html>
