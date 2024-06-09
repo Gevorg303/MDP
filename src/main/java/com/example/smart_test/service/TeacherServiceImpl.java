@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,47 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
         }
+    }
+    @Override
+    public TeacherDto getTeacherByLogin(TeacherDto dto) {
+        TeacherDto result = null;
+        try {
+            List<Teacher> teachers = teacherRepositoryInterface.findAll();
+            List<TeacherDto> dtos = teachers.stream().map(teacherMapperInterface::toDto).collect(Collectors.toList());
+
+            for(int i = 0; i < dtos.size(); i++) {
+                if(Objects.equals(dtos.get(i).getLogin(), dto.getLogin()))
+                {
+                    result = dtos.get(i);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException( e.getMessage(), e);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean checkPasswordByLogin(TeacherDto dto) {
+        try {
+            List<Teacher> students = teacherRepositoryInterface.findAll();
+            List<TeacherDto> dtos = students.stream().map(teacherMapperInterface::toDto).collect(Collectors.toList());
+
+            for(int i = 0; i < dtos.size(); i++) {
+                String dtoLogin = dtos.get(i).getLogin();
+                if(dtoLogin == dto.getLogin()) {
+                    String dtoPassword = dtos.get(i).getPassword();
+                    if(dtoPassword == dto.getPassword()) {
+                        return true;
+                    }
+
+                }
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException( e.getMessage(), e);
+        }
+        return false;
     }
 
     private boolean findTeacherById(Long id) {

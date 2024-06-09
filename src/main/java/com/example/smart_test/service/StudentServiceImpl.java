@@ -1,10 +1,8 @@
 package com.example.smart_test.service;
 
-import com.example.smart_test.domain.EducationalInstitution;
+
 import com.example.smart_test.domain.Student;
-import com.example.smart_test.domain.Teacher;
 import com.example.smart_test.dto.StudentDto;
-import com.example.smart_test.dto.TeacherDto;
 import com.example.smart_test.mapper.api.StudentMapperInterface;
 import com.example.smart_test.repository.StudentRepositoryInterface;
 import com.example.smart_test.service.api.StudentServiceInterface;
@@ -16,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -82,14 +81,14 @@ public class StudentServiceImpl implements StudentServiceInterface {
         return faker.internet().password(8, 16, true, true, true);
     }
     @Override
-    public StudentDto getStudentByLogin(String login) {
+    public StudentDto getStudentByLogin(StudentDto dto) {
         StudentDto result = null;
         try {
             List<Student> teachers = studentRepository.findAll();
             List<StudentDto> dtos = teachers.stream().map(studentMapper::toDTO).collect(Collectors.toList());
 
             for(int i = 0; i < dtos.size(); i++) {
-                if(dtos.get(i).getLogin() == login)
+                if(Objects.equals(dtos.get(i).getLogin(), dto.getLogin()))
                 {
                     result = dtos.get(i);
                 }
@@ -100,16 +99,16 @@ public class StudentServiceImpl implements StudentServiceInterface {
         return result;
     }
     @Override
-    public Boolean checkPasswordByLogin(String login,String password) {
+    public Boolean checkPasswordByLogin(StudentDto dto) {
         try {
             List<Student> students = studentRepository.findAll();
             List<StudentDto> dtos = students.stream().map(studentMapper::toDTO).collect(Collectors.toList());
 
             for(int i = 0; i < dtos.size(); i++) {
                 String dtoLogin = dtos.get(i).getLogin();
-                if(dtoLogin == login) {
+                if(dtoLogin == dto.getLogin()) {
                     String dtoPassword = dtos.get(i).getPassword();
-                    if(dtoLogin == password) {
+                    if(dtoPassword == dto.getPassword()) {
                         return true;
                     }
 

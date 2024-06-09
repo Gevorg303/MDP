@@ -14,4 +14,8 @@ public interface TeacherServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<TeacherDto> getAllTeachers();
+
+    public TeacherDto getTeacherByLogin(TeacherDto dto);
+
+    public Boolean checkPasswordByLogin(TeacherDto dto);
 }
