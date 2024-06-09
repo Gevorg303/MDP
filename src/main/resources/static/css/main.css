@@ -58,9 +58,9 @@ body {
     transition: background-color 0.3s; /* добавляем плавный переход */
 }
 
-#subjects-container:hover {
+#card:hover {
     background-color: #7FFFD4; /* изменение цвета при наведении */
 }
-.subject-card a:hover {
+.card:hover {
     background-color: #f2f2f2;
 }
