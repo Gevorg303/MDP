@@ -53,6 +53,14 @@ body {
     font-size: 1em;
     color: #666;
 }
+#subjects-container {
+    background-color: white;
+    transition: background-color 0.3s; /* добавляем плавный переход */
+}
+
+#subjects-container:hover {
+    background-color: #7FFFD4; /* изменение цвета при наведении */
+}
 .subject-card a:hover {
     background-color: #f2f2f2;
 }
