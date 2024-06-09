@@ -86,9 +86,9 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 
             for(int i = 0; i < dtos.size(); i++) {
                 String dtoLogin = dtos.get(i).getLogin();
-                if(dtoLogin == dto.getLogin()) {
+                if(Objects.equals(dtoLogin, dto.getLogin())) {
                     String dtoPassword = dtos.get(i).getPassword();
-                    if(dtoPassword == dto.getPassword()) {
+                    if(Objects.equals(dtoPassword, dto.getPassword())) {
                         return true;
                     }
 
