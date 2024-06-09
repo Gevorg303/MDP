@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/login_modal.css">
 </head>
 <body>
 <div class="login-box">
@@ -11,14 +13,23 @@
     <form action="#" method="post">
         <input type="text" name="username" placeholder="Логин" required>
         <input type="password" name="password" placeholder="Пароль" required>
-        <button type="submit" name="login">Войти </button>
-
+        <button type="submit" name="login">Войти</button>
     </form>
     <div class="button-container">
-        <a href="/help_login"><button type="button">Помощь</button> <!--переход на страницу "помощь"-->
-        </a> <a href="/test-smart/registration"><button type="button">Регистрация</button></a><!--переход на страницу "регистрация"-->
+        <button type="button" id="helpBtn">Помощь</button>
+        <a href="/test-smart/registration"><button type="button">Регистрация</button></a>
     </div>
 </div>
-<script src="/js/login.js"></script>
+
+<!-- Модальное окно -->
+<div id="helpModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Введите здесь данные, которые выдал Вам ваш классный руководитель</p>
+    </div>
+</div>
+
+<script src="/js/login_modal.js"></script>
+
 </body>
 </html>
