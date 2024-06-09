@@ -28,4 +28,8 @@ public class HomeController {
     public String openTheme() {
         return "theme";
     }
+    @GetMapping("/account")
+    public String openAccount() {
+        return "account";
+    }
 }
