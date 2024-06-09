@@ -2,7 +2,9 @@ package com.example.smart_test.service;
 
 import com.example.smart_test.domain.EducationalInstitution;
 import com.example.smart_test.domain.Student;
+import com.example.smart_test.domain.Teacher;
 import com.example.smart_test.dto.StudentDto;
+import com.example.smart_test.dto.TeacherDto;
 import com.example.smart_test.mapper.api.StudentMapperInterface;
 import com.example.smart_test.repository.StudentRepositoryInterface;
 import com.example.smart_test.service.api.StudentServiceInterface;
@@ -78,6 +80,44 @@ public class StudentServiceImpl implements StudentServiceInterface {
     private String generatePassword() {
         Faker faker = new Faker();
         return faker.internet().password(8, 16, true, true, true);
+    }
+    public StudentDto getTeacherByLogin(String login) {
+        StudentDto result = null;
+        try {
+            List<Student> teachers = studentRepository.findAll();
+            List<StudentDto> dtos = teachers.stream().map(studentMapper::toDTO).collect(Collectors.toList());
+
+            for(int i = 0; i < dtos.size(); i++) {
+                if(dtos.get(i).getLogin() == login)
+                {
+                    result = dtos.get(i);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException( e.getMessage(), e);
+        }
+        return result;
+    }
+    private Boolean checkPasswordByLogin(String login,String password) {
+        try {
+            List<Student> students = studentRepository.findAll();
+            List<StudentDto> dtos = students.stream().map(studentMapper::toDTO).collect(Collectors.toList());
+
+            for(int i = 0; i < dtos.size(); i++) {
+                String dtoLogin = dtos.get(i).getLogin();
+                if(dtoLogin == login) {
+                    String dtoPassword = dtos.get(i).getPassword();
+                    if(dtoLogin == password) {
+                        return true;
+                    }
+
+                }
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException( e.getMessage(), e);
+        }
+        return false;
     }
 
     private boolean findStudentById(Long id) {
