@@ -14,10 +14,18 @@ public class HomeController {
     }
     @GetMapping("/main")
     public String openMain() {
-        return "main";
+        return "login";
     }
     @GetMapping("/help_login")
     public String openHelpLogin() {
         return "help_login";
+    }
+    @GetMapping("/registration")
+    public String openRegistration() {
+        return "registration";
+    }
+    @GetMapping("/theme")
+    public String openTheme() {
+        return "theme";
     }
 }
