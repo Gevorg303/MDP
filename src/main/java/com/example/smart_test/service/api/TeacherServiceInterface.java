@@ -14,4 +14,5 @@ public interface TeacherServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<TeacherDto> getAllTeachers();
+
 }

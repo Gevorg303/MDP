@@ -24,4 +24,6 @@ public class TeacherController {
     public List<TeacherDto> getAllTeacher(){
         return teacherService.getAllTeachers();
     }
+
+
 }

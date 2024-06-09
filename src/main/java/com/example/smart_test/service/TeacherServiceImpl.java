@@ -58,7 +58,6 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
             throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
         }
     }
-
     private boolean findTeacherById(Long id) {
         Optional<Teacher> teacher = teacherRepositoryInterface.findById(id);
         return teacher.isPresent();
