@@ -26,4 +26,10 @@ public class StudentController {
     public List<StudentDto> getAllStudents() {
         return studentService.getAllStudent();
     }
+
+    @GetMapping("/getStudent")
+    public StudentDto getStudentByLogin(@RequestBody String login) { return studentService.getStudentByLogin(login); }
+
+    @GetMapping("/check")
+    public boolean chackStudent(@RequestBody String login,@RequestBody String password) { return studentService.checkPasswordByLogin(login,password); }
 }

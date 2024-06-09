@@ -74,6 +74,7 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         Faker faker = new Faker();
         return faker.internet().password(8, 16, true, true, true);
     }
+    @Override
     public TeacherDto getTeacherByLogin(String login) {
         TeacherDto result = null;
         try {
@@ -91,7 +92,8 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         }
         return result;
     }
-    private Boolean checkPasswordByLogin(String login,String password) {
+    @Override
+    public Boolean checkPasswordByLogin(String login,String password) {
         try {
             List<Teacher> teachers = teacherRepositoryInterface.findAll();
             List<TeacherDto> dtos = teachers.stream().map(teacherMapperInterface::toDto).collect(Collectors.toList());

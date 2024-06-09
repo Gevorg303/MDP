@@ -15,4 +15,7 @@ public interface StudentServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     List<StudentDto> getAllStudent();
+
+    StudentDto getStudentByLogin(String login);
+    Boolean checkPasswordByLogin(String login,String password);
 }
