@@ -1,5 +1,6 @@
 package com.example.smart_test.controller;
 
+
 import com.example.smart_test.service.api.TeacherServiceInterface;
 import com.example.smart_test.dto.TeacherDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,10 @@ public class TeacherController {
     public List<TeacherDto> getAllTeacher(){
         return teacherService.getAllTeachers();
     }
+
+    @PostMapping("/get-teacher")
+    public TeacherDto getStudentByLogin(@RequestBody TeacherDto dto) { return teacherService.getTeacherByLogin(dto); }
+
+    @PostMapping("/check")
+    public boolean chackStudent(@RequestBody TeacherDto dto) { return teacherService.checkPasswordByLogin(dto); }
 }

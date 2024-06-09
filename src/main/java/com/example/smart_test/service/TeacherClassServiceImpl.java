@@ -1,6 +1,8 @@
 package com.example.smart_test.service;
 
 
+
+
 import com.example.smart_test.domain.TeacherClass;
 import com.example.smart_test.dto.TeacherClassDto;
 import com.example.smart_test.mapper.api.TeacherClassMapperInterface;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -58,6 +61,8 @@ public class TeacherClassServiceImpl implements TeacherClassServiceInterface {
             throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
         }
     }
+
+
 
     private boolean findTeacherClassById(Long id) {
         Optional<TeacherClass> indicator = teacherClassRepositoryInterface.findById(id);

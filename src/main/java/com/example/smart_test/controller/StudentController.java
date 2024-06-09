@@ -27,9 +27,9 @@ public class StudentController {
         return studentService.getAllStudent();
     }
 
-    @GetMapping("/getStudent")
-    public StudentDto getStudentByLogin(@RequestBody String login) { return studentService.getStudentByLogin(login); }
+    @PostMapping("/get-student")
+    public StudentDto getStudentByLogin(@RequestBody StudentDto dto) { return studentService.getStudentByLogin(dto); }
 
-    @GetMapping("/check")
-    public boolean chackStudent(@RequestBody String login,@RequestBody String password) { return studentService.checkPasswordByLogin(login,password); }
+    @PostMapping("/check")
+    public boolean checkStudent(@RequestBody StudentDto dto) { return studentService.checkPasswordByLogin(dto); }
 }
