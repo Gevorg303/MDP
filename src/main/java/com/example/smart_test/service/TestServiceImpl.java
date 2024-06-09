@@ -43,4 +43,14 @@ public class TestServiceImpl implements TestServiceInterface {
             throw new RuntimeException("Ошибка при получении всех тестов: " + e.getMessage(), e);
         }
     }
+    @Override
+    public TestDto getTestById(Long id) {
+        try {
+            Test test = testRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Тест не найден"));
+            return testMapper.toDto(test);
+        } catch (Exception e) {
+            throw new RuntimeException("Ошибка при получении теста: " + e.getMessage(), e);
+        }
+    }
 }
