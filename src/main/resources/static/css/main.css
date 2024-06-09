@@ -53,3 +53,6 @@ body {
     font-size: 1em;
     color: #666;
 }
+.subject-card a:hover {
+    background-color: #f2f2f2;
+}
