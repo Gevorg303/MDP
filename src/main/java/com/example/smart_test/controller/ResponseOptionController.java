@@ -1,8 +1,6 @@
 package com.example.smart_test.controller;
 
-import com.example.smart_test.dto.IndicatorDto;
 import com.example.smart_test.dto.ResponseOptionDto;
-import com.example.smart_test.service.api.IndicatorServiceInterface;
 import com.example.smart_test.service.api.ResponseOptionServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

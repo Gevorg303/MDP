@@ -21,6 +21,7 @@ public class ResponseOptionMapperImpl implements ResponseOptionMapperInterface {
     @Override
     public ResponseOption toEntity(ResponseOptionDto dto) {
         ResponseOption entity = new ResponseOption();
+        entity.setId(dto.getId());
         entity.setQuestion(dto.getQuestion());
         entity.setTask(dto.getTask());
         entity.setResponse(dto.getResponse());
