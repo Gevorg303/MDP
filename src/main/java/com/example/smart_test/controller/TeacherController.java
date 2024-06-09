@@ -30,5 +30,6 @@ public class TeacherController {
     public TeacherDto getStudentByLogin(@RequestBody TeacherDto dto) { return teacherService.getTeacherByLogin(dto); }
 
     @PostMapping("/check")
-    public boolean chackStudent(@RequestBody TeacherDto dto) { return teacherService.checkPasswordByLogin(dto); }
+    public boolean checkStudent(@RequestBody TeacherDto dto) {
+        return teacherService.checkPasswordByLogin(dto); }
 }
