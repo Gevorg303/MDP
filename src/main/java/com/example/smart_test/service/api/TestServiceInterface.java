@@ -12,4 +12,5 @@ public interface TestServiceInterface {
 
     List<TestDto> getAllTestDto();
 
+    TestDto getTestById(Long id);
 }

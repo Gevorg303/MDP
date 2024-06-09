@@ -14,4 +14,6 @@ public interface SubjectServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     List<SubjectDto> getAllSubject();
+
+    SubjectDto getSubjectById(Long id);
 }

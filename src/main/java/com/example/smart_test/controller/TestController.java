@@ -25,4 +25,9 @@ public class TestController {
     public List<TestDto> getAllTest(){
         return testService.getAllTestDto();
     }
+    /*Вывод информации про конкретную тему*/
+    @PostMapping("/get")
+    public TestDto getTestById(@RequestBody TestDto testDto) {
+        return testService.getTestById(testDto.getId());
+    }
 }

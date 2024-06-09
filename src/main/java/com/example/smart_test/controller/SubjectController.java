@@ -25,4 +25,9 @@ public class SubjectController {
     public List<SubjectDto> getSubjectDto(){
         return subjectService.getAllSubject();
     }
+    /*Вывод информации про конкретный предмет*/
+    @PostMapping("/get")
+    public SubjectDto getSubjectById(@RequestBody SubjectDto subjectDto) {
+        return subjectService.getSubjectById(subjectDto.getId());
+    }
 }

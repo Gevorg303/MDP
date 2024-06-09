@@ -14,7 +14,7 @@ public class HomeController {
     }
     @GetMapping("/main")
     public String openMain() {
-        return "main";
+        return "login";
     }
     @GetMapping("/help_login")
     public String openHelpLogin() {
