@@ -59,7 +59,7 @@ body {
 }
 
 #subjects-container:hover {
-    background-color: lightgray; /* изменение цвета при наведении */
+    background-color: #7FFFD4; /* изменение цвета при наведении */
 }
 .subject-card a:hover {
     background-color: #f2f2f2;
