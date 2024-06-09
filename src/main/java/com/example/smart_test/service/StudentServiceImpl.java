@@ -71,9 +71,8 @@ public class StudentServiceImpl implements StudentServiceInterface {
         if (dto.getPatronymic() != null && !dto.getPatronymic().isEmpty()) {
             patronymicInitials = dto.getPatronymic().substring(0, Math.min(dto.getPatronymic().length(), 2));
         }
-        Faker faker = new Faker();
-        String randomNumber = faker.number().digits(5);
-        return surnameInitials + nameInitials + patronymicInitials + randomNumber;
+        String id = dto.getId().toString();
+        return surnameInitials + nameInitials + patronymicInitials + id;
     }
 
     private String generatePassword() {

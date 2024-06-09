@@ -38,11 +38,11 @@ public class ResponseOptionServiceImpl implements ResponseOptionServiceInterface
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteResponseOptionDto(ResponseOptionDto dto) {
-        if (findResponseOptionById(dto.getId())) {
+        if (responseOptionRepositoryInterface.findById(dto.getId()).isPresent()) {
             ResponseOption responseOption = responseOptionMapperInterface.toEntity(dto);
             responseOptionRepositoryInterface.delete(responseOption);
         } else {
-            log.error("Индикатор с идентификатором " + dto.getId() + " не существует");
+            log.error("вариант ответа с идентификатором " + dto.getId() + " не существует");
         }
     }
 
@@ -55,7 +55,7 @@ public class ResponseOptionServiceImpl implements ResponseOptionServiceInterface
                     .map(responseOptionMapperInterface::toDTO)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
+            throw new RuntimeException("Ошибка при получении всех вариантов ответа: " + e.getMessage(), e);
         }
     }
 
