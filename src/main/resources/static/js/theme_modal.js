@@ -10,6 +10,8 @@ var modal = document.getElementById('myModal');
 
     confirmActionBtn.onclick = function() {
         var actionRadios = document.getElementsByName('action');
+        var itemName = itemNameInput.value;
+
         for (var i = 0; i < actionRadios.length; i++) {
             if (actionRadios[i].checked) {
                 action = actionRadios[i].value;
@@ -17,14 +19,32 @@ var modal = document.getElementById('myModal');
             }
         }
 
-        var itemName = itemNameInput.value;
-
         if (action === 'delete') {
-            // Действия для удаления темы
-            console.log('Удалить тему: ' + itemName);
+            fetch('/subject/delete', {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Тема удалена: ' + itemName);
+                } else {
+                    console.error('Ошибка удаления темы');
+                }
+            });
         } else if (action === 'add') {
-            // Действия для добавления тему
-            console.log('Добавить тему: ' + itemName);
+            fetch('/subject/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ itemName: itemName })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Тема добавлена: ' + itemName);
+                } else {
+                    console.error('Ошибка добавления темы');
+                }
+            });
         }
 
         modal.style.display = 'none';
@@ -35,3 +55,4 @@ var modal = document.getElementById('myModal');
             modal.style.display = 'none';
         }
     }
+
