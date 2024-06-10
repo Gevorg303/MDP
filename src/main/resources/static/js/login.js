@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data) {
-                window.location.href = '/test-smart/main'; // Переход на главную страницу при успешном входе
+                window.location.href = '/test-smart/account'; // Переход на главную страницу при успешном входе
             } else {
                 alert('Неверный логин или пароль'); // Сообщение об ошибке
             }
