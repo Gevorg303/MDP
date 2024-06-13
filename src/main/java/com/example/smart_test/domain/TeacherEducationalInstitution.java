@@ -17,8 +17,8 @@ public class TeacherEducationalInstitution {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "идентификатор_учитель")
-    private Teacher teacher;
+    @JoinColumn(name = "идентификатор_пользователя")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "идентификатор_образовательное_уч")

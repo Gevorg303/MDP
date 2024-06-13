@@ -21,6 +21,6 @@ public class TeacherClass {
     private StudentClass studentClass;
 
     @ManyToOne
-    @JoinColumn(name = "идентификатор_учитель")
-    private Teacher teacher;
+    @JoinColumn(name = "идентификатор_пользователя")
+    private User user;
 }

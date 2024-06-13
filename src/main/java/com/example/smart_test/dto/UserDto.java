@@ -1,10 +1,12 @@
 package com.example.smart_test.dto;
 
-import jakarta.persistence.Column;
+import com.example.smart_test.domain.Role;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
 @Data
-public class TeacherDto {
+public class UserDto {
     private Long id;
     private String email;
     private String name;
@@ -12,5 +14,5 @@ public class TeacherDto {
     private String patronymic;
     private String password;
     private String surname;
-    private boolean superUser;
+    private Set<Role> roles;
 }

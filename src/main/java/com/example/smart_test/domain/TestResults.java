@@ -26,8 +26,8 @@ public class TestResults {
     @JoinColumn(name = "идентификатор_тест")
     private Test test;
     @ManyToOne
-    @JoinColumn(name = "идентификатор_ученик")
-    private Student student;
+    @JoinColumn(name = "идентификатор_пользователя")
+    private User user;
     @Column(name = "результат_индикатора")
     private boolean resultOfTheIndicator;
 }

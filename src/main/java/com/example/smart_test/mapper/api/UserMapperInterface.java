@@ -3,7 +3,8 @@ package com.example.smart_test.mapper.api;
 import com.example.smart_test.domain.User;
 import com.example.smart_test.dto.UserDto;
 
-public interface TeacherMapperInterface {
-    UserDto toDto(User entity);
+public interface UserMapperInterface {
+    UserDto toDTO(User entity);
+
     User toEntity(UserDto dto);
 }

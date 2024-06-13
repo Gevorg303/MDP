@@ -1,7 +1,6 @@
 package com.example.smart_test.service.api;
 
 import com.example.smart_test.dto.StudentClassDto;
-import com.example.smart_test.dto.StudentDto;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 

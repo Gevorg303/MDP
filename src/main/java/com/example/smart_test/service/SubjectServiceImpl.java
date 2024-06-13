@@ -1,6 +1,5 @@
 package com.example.smart_test.service;
 
-import com.example.smart_test.domain.Student;
 import com.example.smart_test.domain.Subject;
 import com.example.smart_test.dto.SubjectDto;
 import com.example.smart_test.mapper.api.SubjectMapperInterface;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 @Service
 @Slf4j
 public class SubjectServiceImpl implements SubjectServiceInterface {

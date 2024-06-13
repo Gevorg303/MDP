@@ -1,21 +1,20 @@
 package com.example.smart_test.service.api;
 
-import com.example.smart_test.dto.EducationalInstitutionDto;
-import com.example.smart_test.dto.StudentDto;
+import com.example.smart_test.dto.UserDto;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface StudentServiceInterface {
-    StudentDto addStudentDto(StudentDto dto);
+    UserDto addStudentDto(UserDto dto);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    void deleteStudentDto(StudentDto dto);
+    void deleteStudentDto(UserDto dto);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    List<StudentDto> getAllStudent();
+    List<UserDto> getAllStudent();
 
-    StudentDto getStudentByLogin(StudentDto dto);
-    Boolean checkPasswordByLogin(StudentDto dto);
+    UserDto getStudentByLogin(UserDto dto);
+    Boolean checkPasswordByLogin(UserDto dto);
 }

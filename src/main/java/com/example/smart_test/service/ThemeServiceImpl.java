@@ -1,7 +1,5 @@
 package com.example.smart_test.service;
 
-import com.example.smart_test.domain.Student;
-import com.example.smart_test.domain.StudentClass;
 import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.ThemeDto;
 import com.example.smart_test.mapper.api.ThemeMapperInterface;

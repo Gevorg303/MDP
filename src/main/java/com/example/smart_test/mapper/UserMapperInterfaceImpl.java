@@ -1,15 +1,15 @@
 package com.example.smart_test.mapper;
 
-import com.example.smart_test.domain.Teacher;
-import com.example.smart_test.dto.TeacherDto;
-import com.example.smart_test.mapper.api.TeacherMapperInterface;
+import com.example.smart_test.domain.User;
+import com.example.smart_test.dto.UserDto;
+import com.example.smart_test.mapper.api.UserMapperInterface;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TeacherMapperImpl implements TeacherMapperInterface {
+public class UserMapperInterfaceImpl implements UserMapperInterface {
     @Override
-    public TeacherDto toDto(Teacher entity){
-        TeacherDto dto = new TeacherDto();
+    public UserDto toDTO(User entity) {
+        UserDto dto = new UserDto();
         dto.setId(entity.getId());
         dto.setEmail(entity.getEmail());
         dto.setName(entity.getName());
@@ -17,12 +17,13 @@ public class TeacherMapperImpl implements TeacherMapperInterface {
         dto.setPatronymic(entity.getPatronymic());
         dto.setPassword(entity.getPassword());
         dto.setSurname(entity.getSurname());
-        dto.setSuperUser(entity.isSuperUser());
+        dto.setRoles(entity.getRoles());
         return dto;
     }
+
     @Override
-    public Teacher toEntity(TeacherDto dto){
-        Teacher entity = new Teacher();
+    public User toEntity(UserDto dto) {
+        User entity = new User();
         entity.setId(dto.getId());
         entity.setEmail(dto.getEmail());
         entity.setName(dto.getName());
@@ -30,7 +31,7 @@ public class TeacherMapperImpl implements TeacherMapperInterface {
         entity.setPatronymic(dto.getPatronymic());
         entity.setPassword(dto.getPassword());
         entity.setSurname(dto.getSurname());
-        entity.setSuperUser(dto.isSuperUser());
+        entity.setRoles(dto.getRoles());
         return entity;
     }
 }

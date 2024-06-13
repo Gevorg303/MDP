@@ -19,7 +19,7 @@ public class SubjectTeacher {
     @JoinColumn(name = "идентификатор_предмет")
     private Subject subject;
     @ManyToOne
-    @JoinColumn(name = "идентификатор_учитель")
-    private Teacher teacher;
+    @JoinColumn(name = "идентификатор_пользователя")
+    private User user;
 }
 

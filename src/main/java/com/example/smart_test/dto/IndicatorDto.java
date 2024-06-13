@@ -1,7 +1,6 @@
 package com.example.smart_test.dto;
 
 import com.example.smart_test.domain.Theme;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
