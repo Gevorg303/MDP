@@ -1,4 +1,4 @@
-package security;
+package com.example.smart_test.security;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

@@ -1,4 +1,4 @@
-package security;
+package com.example.smart_test.security;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -68,6 +68,7 @@ public class JwtTokenRepository implements CsrfTokenRepository {
     public CsrfToken loadToken(HttpServletRequest request) {
         return (CsrfToken) request.getAttribute(CsrfToken.class.getName());
     }
+
     public void clearToken(HttpServletResponse response) {
         if (response.getHeaderNames().contains("x-csrf-token"))
             response.setHeader("x-csrf-token", "");

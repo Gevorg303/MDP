@@ -33,5 +33,4 @@ public class AuthController {
         User user = (principal instanceof User) ? (User) principal : null;
         return Objects.nonNull(user) ? this.service.getByLogin(user.getUsername()) : null;
     }
-
 }

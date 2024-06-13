@@ -2,6 +2,8 @@ package com.example.smart_test;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 import org.springframework.security.web.csrf.InvalidCsrfTokenException;
@@ -10,18 +12,15 @@ import org.springframework.security.web.util.UrlUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import security.JwtTokenRepository;
+import com.example.smart_test.security.JwtTokenRepository;
 
 import javax.naming.AuthenticationException;
-
+@EqualsAndHashCode(callSuper = true)
+@Data
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private JwtTokenRepository tokenRepository;
-
-    public GlobalExceptionHandler(JwtTokenRepository tokenRepository) {
-        this.tokenRepository = tokenRepository;
-    }
 
     @ExceptionHandler({AuthenticationException.class, MissingCsrfTokenException.class, InvalidCsrfTokenException.class, SessionAuthenticationException.class})
     public ErrorInfo handleAuthenticationException(RuntimeException ex, HttpServletRequest request, HttpServletResponse response){
