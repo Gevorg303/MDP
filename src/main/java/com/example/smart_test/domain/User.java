@@ -30,11 +30,7 @@ public class User {
     private String password;
     @Column(name = "фамилия_пользователя")
     private String surname;
-   // @OneToMany(mappedBy = "user"/*, cascade = CascadeType.ALL, fetch = FetchType.LAZY*/)
-   // @JoinColumn(name = "роль_пользователя")
-   //private Set<Role> roles;
-   @ManyToOne
-   @JoinColumn(name = "роль_пользователя")
-   private Role roles;
-
+    @ManyToOne
+    @JoinColumn(name = "роль_пользователя")
+    private Role roles;
 }

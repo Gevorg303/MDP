@@ -12,11 +12,6 @@ public class Role {
     @Column(name = "идентификатор_роли")
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "название_роли")
-    private Roles role;
-
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "идентификатор_пользователя")
-    //private User user;
+    private String role;
 }
