@@ -1,24 +1,37 @@
 package com.example.smart_test.controller;
 
+import com.example.smart_test.domain.User;
+import com.example.smart_test.mapper.api.UserMapperInterface;
+import com.example.smart_test.service.UserServiceImpl;
 import com.example.smart_test.service.api.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    @Autowired
-    private UserServiceInterface service;
+    private UserServiceImpl service;
 
-//    @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public @ResponseBody User getAuthUser() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth == null) {
-//            return null;
-//        }
-//        Object principal = auth.getPrincipal();
-//        User user = (principal instanceof User) ? (User) principal : null;
-//        return Objects.nonNull(user) ? this.service.getUserByLogin(user) : null;
-//    }
+    public AuthController(UserServiceImpl service) {
+        this.service = service;
+    }
+
+    @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody User getAuthUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null) {
+            return null;
+        }
+        Object principal = auth.getPrincipal();
+        User user = (principal instanceof User) ? (User) principal : null;
+        return Objects.nonNull(user) ? service.getUserByLogin(user.getLogin()) : null;
+    }
 }

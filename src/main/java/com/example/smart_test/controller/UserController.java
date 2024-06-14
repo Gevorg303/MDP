@@ -1,6 +1,7 @@
 package com.example.smart_test.controller;
 
 import com.example.smart_test.dto.UserDto;
+import com.example.smart_test.service.UserServiceImpl;
 import com.example.smart_test.service.api.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private UserServiceInterface userService;
+    private UserServiceImpl userService;
 
     @PostMapping("/add")
     public UserDto addUser(@RequestBody UserDto userDto) {

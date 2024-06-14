@@ -11,7 +11,7 @@ public class TeacherEducationalInstitutionMapperImpl implements TeacherEducation
     public TeacherEducationalInstitutionDto toDto(TeacherEducationalInstitution entity){
         TeacherEducationalInstitutionDto dto = new TeacherEducationalInstitutionDto();
         dto.setId(entity.getId());
-        dto.setTeacher(entity.getTeacher());
+        dto.setUser(entity.getUser());
         dto.setEducationalInstitution(entity.getEducationalInstitution());
         return dto;
     }
@@ -19,7 +19,7 @@ public class TeacherEducationalInstitutionMapperImpl implements TeacherEducation
     public TeacherEducationalInstitution toEntity(TeacherEducationalInstitutionDto dto){
         TeacherEducationalInstitution entity = new TeacherEducationalInstitution();
         entity.setId(dto.getId());
-        entity.setTeacher(dto.getTeacher());
+        entity.setUser(dto.getUser());
         entity.setEducationalInstitution(dto.getEducationalInstitution());
         return entity;
     }

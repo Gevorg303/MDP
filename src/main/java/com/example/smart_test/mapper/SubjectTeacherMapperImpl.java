@@ -12,7 +12,7 @@ public class SubjectTeacherMapperImpl implements SubjectTeacherMapperInterface {
         SubjectTeacherDto dto = new SubjectTeacherDto();
         dto.setId(entity.getId());
         dto.setSubject(entity.getSubject());
-        dto.setTeacher(entity.getTeacher());
+        dto.setUser(entity.getUser());
         return dto;
     }
     @Override
@@ -20,7 +20,7 @@ public class SubjectTeacherMapperImpl implements SubjectTeacherMapperInterface {
         SubjectTeacher entity = new SubjectTeacher();
         entity.setId(dto.getId());
         entity.setSubject(dto.getSubject());
-        entity.setTeacher(dto.getTeacher());
+        entity.setUser(dto.getUser());
         return entity;
     }
 }

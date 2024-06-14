@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
+import static org.springframework.http.HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS;
+
 @Repository
 public class JwtTokenRepository implements CsrfTokenRepository {
 
@@ -54,8 +56,8 @@ public class JwtTokenRepository implements CsrfTokenRepository {
     @Override
     public void saveToken(CsrfToken csrfToken, HttpServletRequest request, HttpServletResponse response) {
         if (Objects.nonNull(csrfToken)) {
-            if (!response.getHeaderNames().contains(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS))
-                response.addHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, csrfToken.getHeaderName());
+            if (!response.getHeaderNames().contains(ACCESS_CONTROL_EXPOSE_HEADERS))
+                response.addHeader(ACCESS_CONTROL_EXPOSE_HEADERS, csrfToken.getHeaderName());
 
             if (response.getHeaderNames().contains(csrfToken.getHeaderName()))
                 response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());

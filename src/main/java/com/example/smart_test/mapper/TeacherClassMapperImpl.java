@@ -11,7 +11,7 @@ public class TeacherClassMapperImpl implements TeacherClassMapperInterface {
     public TeacherClassDto toDto(TeacherClass entity){
         TeacherClassDto dto = new TeacherClassDto();
         dto.setId(entity.getId());
-        dto.setTeacher(entity.getTeacher());
+        dto.setUser(entity.getUser());
         dto.setStudentClass(entity.getStudentClass());
         return dto;
     }
@@ -19,7 +19,7 @@ public class TeacherClassMapperImpl implements TeacherClassMapperInterface {
     public TeacherClass toEntity(TeacherClassDto dto){
         TeacherClass entity = new TeacherClass();
         entity.setId(dto.getId());
-        entity.setTeacher(dto.getTeacher());
+        entity.setUser(dto.getUser());
         entity.setStudentClass(dto.getStudentClass());
         return entity;
     }

@@ -13,10 +13,10 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "роль")
+    @Column(name = "название_роли")
     private Roles role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "идентификатор_пользователя")
-    private User user;
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "идентификатор_пользователя")
+    //private User user;
 }
