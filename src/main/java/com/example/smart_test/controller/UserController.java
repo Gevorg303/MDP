@@ -1,11 +1,10 @@
 package com.example.smart_test.controller;
 
+import com.example.smart_test.domain.User;
 import com.example.smart_test.dto.UserDto;
+import com.example.smart_test.mapper.api.UserMapperInterface;
 import com.example.smart_test.service.UserServiceImpl;
-import com.example.smart_test.service.api.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +14,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
+    @Autowired
+    private UserMapperInterface userMapper;
 
     @PostMapping("/add")
     public UserDto addUser(@RequestBody UserDto userDto) {
@@ -34,5 +35,10 @@ public class UserController {
     @GetMapping("/{login}")
     public UserDto getUserByLogin(@RequestBody UserDto userDto) {
         return userService.getUserByLogin(userDto);
+    }
+    @GetMapping("/current")
+    public UserDto getCurrentUser() {
+        User currentUser = userService.getCurrentUser();
+        return userMapper.toDTO(currentUser);
     }
 }
