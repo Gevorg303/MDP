@@ -55,6 +55,7 @@ public class SecurityConfig {
         var provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userService);
         provider.setPasswordEncoder(passwordEncoder);
+      //  String s = passwordEncoder.encode("Vict_Serg_123");
         return provider;
     }
 }

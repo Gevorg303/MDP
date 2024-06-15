@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,9 +20,13 @@ public class UserServiceImpl implements UserServiceInterface {
     private UserRepositoryInterface userRepository;
     @Autowired
     private UserMapperInterface userMapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public UserDto addUser(UserDto userDto) {
+        userDto.setPasswordEncoder(passwordEncoder.encode(userDto.getPasswordEncoder()));
         User userEntity = userMapper.toEntity(userDto);
         userRepository.save(userEntity);
         return userDto;
