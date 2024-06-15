@@ -1,5 +1,6 @@
 package com.example.smart_test.controller;
 
+import com.example.smart_test.CustomAuthenticationProvider;
 import com.example.smart_test.dto.UserDto;
 import com.example.smart_test.service.AuthServiceImpl;
 import jakarta.servlet.http.HttpSession;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    private final AuthenticationProvider authenticationProvider;
+    private final CustomAuthenticationProvider authenticationProvider;
 
-    public AuthController(AuthenticationProvider authenticationProvider) {
+    public AuthController(CustomAuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
     }
 
