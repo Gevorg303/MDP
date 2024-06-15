@@ -1,22 +1,19 @@
 package com.example.smart_test.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "пользователь")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,22 +28,30 @@ public class User implements UserDetails {
     @Column(name = "отчество_пользователя")
     private String patronymic;
     @Column(name = "пароль_пользователя")
-    private String password;
+    private String passwordEncoder;
     @Column(name = "фамилия_пользователя")
     private String surname;
     @ManyToOne
     @JoinColumn(name = "роль_пользователя")
     private Role roles;
 
-
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+    public String getPassword() {
+        return passwordEncoder;
+    }
+    @Override
+    public String getUsername() {
+        return login;
     }
 
     @Override
-    public String getUsername() {
-        return null;
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return new ArrayList<GrantedAuthority>();
     }
 
     @Override
@@ -61,11 +66,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
         return true;
     }
 }

@@ -12,7 +12,7 @@ public class UserDto {
     private String name;
     private String login;
     private String patronymic;
-    private String password;
+    private String passwordEncoder;
     private String surname;
     private Role roles;
    // private Set<Role> roles;

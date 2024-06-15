@@ -15,7 +15,7 @@ public class UserMapperInterfaceImpl implements UserMapperInterface {
         dto.setName(entity.getName());
         dto.setLogin(entity.getLogin());
         dto.setPatronymic(entity.getPatronymic());
-        dto.setPassword(entity.getPassword());
+        dto.setPasswordEncoder(entity.getPasswordEncoder());
         dto.setSurname(entity.getSurname());
         dto.setRoles(entity.getRoles());
         return dto;
@@ -29,7 +29,7 @@ public class UserMapperInterfaceImpl implements UserMapperInterface {
         entity.setName(dto.getName());
         entity.setLogin(dto.getLogin());
         entity.setPatronymic(dto.getPatronymic());
-        entity.setPassword(dto.getPassword());
+        entity.setPasswordEncoder(dto.getPasswordEncoder());
         entity.setSurname(dto.getSurname());
         entity.setRoles(dto.getRoles());
         return entity;
