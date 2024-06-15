@@ -12,10 +12,10 @@ public class HomeController {
     public String openLogin() {
         return "login";
     }
-    @GetMapping("/main")
-    public String openMain() {
-        return "main";
-    }
+//    @GetMapping("/main")
+//    public String openMain() {
+//        return "main";
+//    }
     @GetMapping("/help_login")
     public String openHelpLogin() {
         return "help_login";
