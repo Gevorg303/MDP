@@ -15,42 +15,5 @@
     <button type="submit">Login</button>
 </form>
 
-<script>
-    // Обработка ответа от сервера
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Получение данных из формы
-        const formData = new FormData(event.target);
-        const login = formData.get('login');
-        const password = formData.get('password');
-
-        // Отправка POST запроса
-        fetch('http://localhost:8080/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ login: login, password: password })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Authentication failed');
-            }
-        })
-        .then(data => {
-            console.log('Authenticated user:', data);
-            // Действия после успешной аутентификации (например, перенаправление на другую страницу)
-            // window.location.href = '/profile';
-        })
-        .catch(error => {
-            console.error('Authentication error:', error);
-            // Действия при ошибке аутентификации (например, вывод сообщения об ошибке)
-            alert('Authentication failed. Please check your credentials.');
-        });
-    });
-</script>
 </body>
 </html>

@@ -2,24 +2,34 @@ package com.example.smart_test.controller;
 
 import com.example.smart_test.dto.UserDto;
 import com.example.smart_test.service.AuthServiceImpl;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    @Autowired
-    private AuthServiceImpl authService;
-    @PostMapping("/login")
-    public UserDto login(@RequestBody UserDto dto) {
-        return authService.checkUser(dto);
+    private final AuthenticationProvider authenticationProvider;
+
+    public AuthController(AuthenticationProvider authenticationProvider) {
+        this.authenticationProvider = authenticationProvider;
     }
 
-    @PostMapping("/register")
-    public UserDto register(@RequestBody UserDto dto) {
-        return null;
+    @PostMapping("/login")
+    public String login(@RequestParam("login") String username,
+                        @RequestParam("password") String password,
+                        HttpSession session) {
+        Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+        return "redirect:/test-smart/main";
+    }
+    @GetMapping("/main")
+    public String openMain() {
+        return "main";
     }
 }

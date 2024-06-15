@@ -17,7 +17,7 @@ public class SecurityConfig {
                 // Настройка авторизации HTTP-запросов
                 .authorizeHttpRequests((requests) -> requests
                         // Разрешает доступ ко всем запросам, соответствующим шаблону /public/**
-                        .requestMatchers("/public/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
                         // Все остальные запросы требуют аутентификации
                         .anyRequest().authenticated()
                 )
