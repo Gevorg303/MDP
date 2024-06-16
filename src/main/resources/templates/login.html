@@ -52,16 +52,16 @@
                 console.log('Received token:', token);
                 //localStorage.setItem('jwtToken', token); // Сохранение токена в localStorage
                 document.cookie = "jwtToken="+token;
-                alert('Login successful');
+               // alert('Login successful');
                 window.location.href = 'main'; // Перенаправление на другую страницу
             } else {
                 const errorText = await response.text();
                 console.error('Login failed:', errorText);
-                alert('Login failed');
+              //  alert('Login failed');
             }
         } catch (error) {
             console.error('Error during fetch:', error);
-            alert('An error occurred. Check the console for more details.');
+          //  alert('An error occurred. Check the console for more details.');
         }
     });
 </script>
