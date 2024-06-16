@@ -36,11 +36,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         // Разрешаем доступ только к /api/login, чтобы аутентифицироваться и получить токен
-                        .requestMatchers("/test-smart/login").permitAll()
-                        .requestMatchers("/api/login").permitAll()
+                        .requestMatchers("/test-smart/login","/api/login").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer((rs) -> rs.jwt((jwt) -> jwt.decoder(jwtDecoder)))
+                .oauth2ResourceServer((rs) -> rs.jwt((jwt) -> jwt.decoder(jwtDecoder).))
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }
