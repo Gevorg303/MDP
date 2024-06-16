@@ -52,7 +52,7 @@
             if (response.ok) {
                 const token = await response.text();
                 console.log('Received token:', token);
-                document.cookie = "jwtToken="+token;
+                document.cookie = "jwtToken="+token+"; path=/;"
                // alert('Login successful');
                 window.location.href = 'main'; // Перенаправление на другую страницу
             } else {

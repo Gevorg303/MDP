@@ -46,6 +46,18 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
         }
 
     }
+
+   // @Override
+    public /*List<SubjectDto> */void getSubjectByLogin(Long id) {
+    /*    try {
+            Subject subject = subjectRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Предмет не найден"));
+            return subjectMapper.toDTO(subject);
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }*/
+
+    }
     @Override
     public SubjectDto getSubjectById(Long id) {
         try {

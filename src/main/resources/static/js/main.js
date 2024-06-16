@@ -16,6 +16,7 @@ function createSubjectCard(subject) {
 
 // Получение предметов при загрузке страницы
 document.addEventListener('DOMContentLoaded', fetchSubjects);
+document.addEventListener('DOMContentLoaded', fetchUser);
 
 // Функция для получения предметов с сервера
 async function fetchSubjects() {
@@ -30,6 +31,25 @@ async function fetchSubjects() {
             const card = createSubjectCard(subject);
             container.appendChild(card);
         });
+    } catch (error) {
+        console.error('Ошибка получения данных:', error);
+    }
+}
+
+async function fetchUser() {
+    try {
+
+        const response = await fetch('/users/current');
+        if (!response.ok) {
+            throw new Error('Ошибка сети');
+        }
+        const user = await response.json();
+        const welcome = document.getElementById('welcome');
+        welcome.innerHTML = "Здравствуйте, "+user.name;
+       /* subjects.forEach(subject => {
+            const card = createSubjectCard(subject);
+            container.appendChild(card);
+        });*/
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }
