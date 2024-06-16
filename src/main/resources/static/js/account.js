@@ -9,10 +9,6 @@ async function fetchUserToAccount() {
         if (!response.ok) {
             throw new Error('Ошибка сети');
         }
-        const response = await fetch('/users/current');
-                if (!response.ok) {
-                    throw new Error('Ошибка сети');
-                }
         const user = await response.json();
         const surname = document.getElementById('surname');
         const name = document.getElementById('name');
