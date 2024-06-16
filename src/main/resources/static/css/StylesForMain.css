@@ -90,6 +90,25 @@ nav ul li.right a {
     /* Отступ между кнопками */
 }
 
+.w-8{
+width:1.5rem;
+}
+.h-8{
+height:1.5rem;
+}
+
+.flex-row{
+display: flex;
+flex-direction: row;
+gap: 8px;
+padding: 16px;
+}
+.fill{
+flex-grow:1
+}
+
+a, a:visited {text-decoration: none; color:white !important; }
+
 /* Стили для иконок через Font Awesome классы */
 .fas {
     font-size: 20px;
@@ -97,6 +116,8 @@ nav ul li.right a {
     color: white;
     /* Цвет иконки (белый) */
 }
+
+
 
 .fa {
     margin-left: 5px;
@@ -205,3 +226,4 @@ nav ul li.right a {
   .product-card:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Более насыщенная тень при наведении */
   }
+

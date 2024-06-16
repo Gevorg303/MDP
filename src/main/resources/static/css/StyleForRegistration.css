@@ -12,6 +12,27 @@ label {
     display: block;
     margin-bottom: 5px;
 }
+
+.w-8{
+width:1.5rem;
+}
+.h-8{
+height:1.5rem;
+}
+
+.flex-row{
+display: flex;
+flex-direction: row;
+gap: 8px;
+padding: 16px;
+}
+.fill{
+flex-grow:1
+}
+
+a, a:visited {text-decoration: none; color:white !important; }
+
+
 input[type="text"],
 input[type="email"],
 select {
