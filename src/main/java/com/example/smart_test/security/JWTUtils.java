@@ -13,7 +13,7 @@ public class JWTUtils {
     @Autowired
     private JwtEncoder encoder;
     @Autowired
-    private static JwtDecoder decoder;
+    private JwtDecoder decoder;
 
     public String generateToken(String username) {
         Instant now = Instant.now();
@@ -26,7 +26,7 @@ public class JWTUtils {
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 
-    public static Jwt decodeToken(String token) {
+    public Jwt decodeToken(String token) {
         try {
             return decoder.decode(token);
         } catch (JwtException e) {

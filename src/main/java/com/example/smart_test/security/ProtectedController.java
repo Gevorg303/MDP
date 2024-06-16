@@ -1,5 +1,6 @@
 package com.example.smart_test.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.JwtException;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test-smart")
 public class ProtectedController {
+    @Autowired
+    private JWTUtils jwtUtils;
 
     @GetMapping("/main")
     public ResponseEntity<?> protectedEndpoint(@RequestHeader("Authorization") String authHeader) {
@@ -18,7 +21,7 @@ public class ProtectedController {
             String token = authHeader.substring(7);
             try {
                 // Декодируйте токен и проверьте его
-                var jwt = JWTUtils.decodeToken(token);
+                var jwt = jwtUtils.decodeToken(token);
 
 
 
