@@ -41,6 +41,7 @@ function createSubjectCard(subject) {
     card.className = 'card';
 
     const title = document.createElement('h2');
+    title.className = 'h2';
     title.textContent = subject.themeName;
     card.appendChild(title);
 
@@ -60,6 +61,7 @@ function createSubjectCard(subject) {
     items.forEach(item => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
+        link.className = 'link';
         link.href = item.url;
         link.textContent = item.text;
         listItem.appendChild(link);

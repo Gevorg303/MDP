@@ -5,12 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Регистрация</title>
     <link rel="stylesheet" href="../static/css/StyleForRegistration.css">
 </head>
 
 <body>
+<nav>
+    <div class="flex-row">
+        <img class="w-8 h-8" src="/images/в.png" alt="Логотип">
+        <a href="main">Предметы</a>
+        <a href="registration">Зарегистрировать пользователя</a>
+        <a href="#Справка">Справка</a>
+        <div class="fill"> </div>
+        <a href="#"><i class="fas fa-bell"></i></a>
+        <a href="#"><i class="fas fa-comments"></i></a>
+        <a href="account">Личный кабинет</a>
+
+    </div>
+</nav>
 <h1>Регистрация</h1>
+
 <form id="loginForm">
     <label for="role">Роль:</label>
     <select id="role" name="role" required>
@@ -29,8 +44,18 @@
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
-    <button type="button" onclick="registerUser()">Зарегистрироваться</button>
+    <button type="button" onclick="registerUser()">Зарегистрировать пользователя</button>
+    <button type="submit" onclick="window.history.back()='login'">Назад</button>
 </form>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Регистрация успешна!</h2>
+        <p>Логин: <span id="modalLogin"></span></p>
+        <p>Пароль: <span id="modalPassword"></span></p>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
 
 <script>
     function registerUser() {
@@ -62,5 +87,7 @@
     }
 </script>
 </body>
-
+<footer>
+    <p>&copy; Информация о сайте</p>
+</footer>
 </html>

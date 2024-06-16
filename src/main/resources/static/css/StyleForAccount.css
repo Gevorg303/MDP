@@ -197,3 +197,9 @@ nav ul li.right a {
     background-color: #10568E;
 }
 
+.back-button {
+            border-radius: 15px; /* Скругленные углы */
+        }
+.out-button {
+             border-radius: 15px; /* Скругленные углы */
+        }
