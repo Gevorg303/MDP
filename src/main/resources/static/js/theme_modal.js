@@ -20,7 +20,7 @@ var modal = document.getElementById('myModal');
         }
 
         if (action === 'delete') {
-            fetch('/subject/delete', {
+            fetch('/theme/delete', {
                 method: 'DELETE'
             })
             .then(response => {
@@ -31,7 +31,7 @@ var modal = document.getElementById('myModal');
                 }
             });
         } else if (action === 'add') {
-            fetch('/subject/add', {
+            fetch('/theme/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ var modal = document.getElementById('myModal');
                 } else {
                     console.error('Ошибка добавления темы');
                 }
-            });
+            });5
         }
 
         modal.style.display = 'none';

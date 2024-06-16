@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../static/css/StylesForLogin.css">
 </head>
+
 <body>
-<h1>Login</h1>
-<form id="loginForm">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
-    <button type="submit">Login</button>
-</form>
+
+<div class="container">
+    <div class="login-box">
+        <h1>Вход</h1>
+        <div class="fgf">
+            <form id="loginForm">
+            <div>
+
+                <input type="text" name="username" id="username" placeholder="Логин" required>
+                <input type="password" name="password" id="password" placeholder="Пароль" required>
+
+            </div>
+            <a href="main"><button>Войти</button></a>
+            </form>
+        </div>
+    </div>
+
+    <a href="registration" class="reg-button">Зарегистрироваться</a>
+</div>
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', async (e) => {

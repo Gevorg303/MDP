@@ -1,54 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Регистрация ученика</title>
-<link rel="stylesheet" href="../static/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../static/css/StyleForRegistration.css">
 </head>
+
 <body>
-<div class="container">
-    <h1>Регистрация ученика</h1>
-    <form action="#" method="post">
-        <label for="fname">Имя:</label>
-        <input type="text" id="fname" pattern="[А-Яа-яA-Za-z]{2,15}"  name="fname" required>
-        
-        <label for="lname">Фамилия:</label>
-        <input type="text" id="lname" pattern="[А-Яа-яA-Za-z]+(-[А-Яа-яA-Za-z]+)?(\s[А-Яа-яA-Za-z]+(-[А-Яа-яA-Za-z]+)?)?" name="lname" required>
-        
-        <label for="mname">Отчество:</label>
-        <input type="text" id="mname" pattern="[А-Яа-яA-Za-z]{2,20}" name="mname">
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="login">Логин:</label>
-        <input type="text" id="login" pattern=".{6,}" name="login" required>
-        
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" name="password" required>
-        
-        <label for="class">Класс:</label>
-        <select id="class" name="class">
-            <option value="5">5 класс</option>
-            <option value="6">6 класс</option>
-            <option value="7">7 класс</option>
-            <option value="8">8 класс</option>
-            <option value="9">9 класс</option>
-            <option value="10">10 класс</option>
-            <option value="11">11 класс</option>
-        </select>
-        
-        <label for="school">Образовательное учреждение:</label>
-        <select id="school" name="school">
-            <option value="school1">Школа №1</option>
-            <option value="school2">Школа №2</option>
-            <option value="school3">Школа №3</option>
-            <option value="school4">Школа №4</option>
-        </select>
-        
-        <input type="submit" value="Зарегистрироваться">
-    </form>
-</div>
+<h1>Регистрация</h1>
+<form id="loginForm">
+    <label for="role">Роль:</label>
+    <select id="role" name="role" required>
+        <option value="Учитель">Учитель</option>
+        <option value="Ученик">Ученик</option>
+    </select>
+    <label for="surname">Фамилия:</label>
+    <input type="text" id="surname" name="surname" required>
+
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="patronymic">Отчество:</label>
+    <input type="text" id="patronymic" name="patronymic">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="button" onclick="registerUser()">Зарегистрироваться</button>
+</form>
+
+<script>
+    function registerUser() {
+        // Get form data
+        var formData = {
+            role: document.getElementById("role").value,
+            surname: document.getElementById("surname").value,
+            name: document.getElementById("name").value,
+            patronymic: document.getElementById("patronymic").value,
+            email: document.getElementById("email").value
+        };
+
+        // Send form data to server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/users/add", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle successful response
+                console.log(xhr.responseText);
+                alert('Регистрация успешно завершена!');
+            } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                // Handle error response
+                console.error('Ошибка регистрации:', xhr.responseText);
+                alert('Ошибка регистрации. Пожалуйста, попробуйте еще раз.');
+            }
+        };
+        xhr.send(JSON.stringify(formData));
+    }
+</script>
 </body>
+
 </html>
