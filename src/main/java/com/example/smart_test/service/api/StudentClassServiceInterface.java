@@ -13,4 +13,6 @@ public interface StudentClassServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     List<StudentClassDto> getAllStudentClass();
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<StudentClassDto>  getStudentClassByTeacherId(Long id);
 }
