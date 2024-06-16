@@ -24,4 +24,8 @@ public class ThemeController {
     public List<ThemeDto> getAllTheme(){
         return themeService.getAllTheme();
     }
+    @GetMapping("/subjectid={id}")
+    public List<ThemeDto> getAllThemesBySubjectId(@PathVariable Long id){
+        return themeService.getThemeBySubjectId(id);
+    }
 }

@@ -14,4 +14,7 @@ public interface ThemeServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     List<ThemeDto> getAllTheme();
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<ThemeDto>  getThemeBySubjectId(Long id);
 }

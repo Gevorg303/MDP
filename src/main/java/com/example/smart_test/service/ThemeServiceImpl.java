@@ -1,5 +1,6 @@
 package com.example.smart_test.service;
 
+
 import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.ThemeDto;
 import com.example.smart_test.mapper.api.ThemeMapperInterface;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,5 +57,19 @@ public class ThemeServiceImpl implements ThemeServiceInterface {
     private boolean findThemeById(Long id) {
         Optional<Theme> theme = themeRepository.findById(id);
         return theme.isPresent();
+    }
+    @Override
+    public List<ThemeDto>  getThemeBySubjectId(Long id) {
+        try {
+            List<Theme> subjects = themeRepository.findBySubjectId(id);
+            List<ThemeDto> subjectDto = new ArrayList<>();
+            for (Theme subject : subjects) {
+                subjectDto.add(themeMapper.toDTO(subject));
+            }
+            return subjectDto;
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }
+
     }
 }
