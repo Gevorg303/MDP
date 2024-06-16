@@ -24,6 +24,24 @@ h1{
     justify-content: center;
     height: 100vh;
 }
+.w-8{
+width:1.5rem;
+}
+.h-8{
+height:1.5rem;
+}
+
+.flex-row{
+display: flex;
+flex-direction: row;
+gap: 8px;
+padding: 16px;
+}
+.fill{
+flex-grow:1
+}
+
+a, a:visited {text-decoration: none; color:white; }
 
 .reg-button {
     display: block;
