@@ -6,6 +6,7 @@ import com.example.smart_test.mapper.api.SubjectMapperInterface;
 import com.example.smart_test.repository.SubjectRepositoryInterface;
 import com.example.smart_test.service.api.SubjectServiceInterface;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,15 +48,18 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
 
     }
 
-   // @Override
-    public /*List<SubjectDto> */void getSubjectByLogin(Long id) {
-    /*    try {
-            Subject subject = subjectRepository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Предмет не найден"));
-            return subjectMapper.toDTO(subject);
+    @Override
+    public List<SubjectDto>  getSubjectByLogin(String login) {
+       try {
+           List<Subject> subjects = subjectRepository.findByLogin(login);
+           List<SubjectDto> subjectDto = new ArrayList<>();
+           for (Subject subject : subjects) {
+               subjectDto.add(subjectMapper.toDTO(subject));
+           }
+           return subjectDto;
         } catch (Exception e) {
             throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
-        }*/
+        }
 
     }
     @Override

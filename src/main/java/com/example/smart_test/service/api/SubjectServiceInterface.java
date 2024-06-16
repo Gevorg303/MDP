@@ -16,4 +16,6 @@ public interface SubjectServiceInterface {
     List<SubjectDto> getAllSubject();
 
     SubjectDto getSubjectById(Long id);
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<SubjectDto>  getSubjectByLogin(String login);
 }

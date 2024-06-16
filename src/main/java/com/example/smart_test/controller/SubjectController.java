@@ -1,6 +1,7 @@
 package com.example.smart_test.controller;
 
 import com.example.smart_test.dto.SubjectDto;
+import com.example.smart_test.dto.SubjectTeacherDto;
 import com.example.smart_test.repository.SubjectRepositoryInterface;
 import com.example.smart_test.service.api.SubjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,9 @@ public class SubjectController {
     @PostMapping("/get")
     public SubjectDto getSubjectById(@RequestBody SubjectDto subjectDto) {
         return subjectService.getSubjectById(subjectDto.getId());
+    }
+    @GetMapping("/{login}")
+    public List<SubjectDto> getSubjectTeacherDto(@PathVariable String login){
+        return subjectService.getSubjectByLogin(login);
     }
 }

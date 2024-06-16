@@ -21,12 +21,18 @@ document.addEventListener('DOMContentLoaded', fetchUser);
 // Функция для получения предметов с сервера
 async function fetchSubjects() {
     try {
-        const response = await fetch('/subject/all');
-        if (!response.ok) {
+        const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+        const user = await response.json();
+        response2 = await fetch('/subject/'+user.login);
+        if (!response2.ok) {
             throw new Error('Ошибка сети');
         }
-        const subjects = await response.json();
+        const subjects = await response2.json();
         const container = document.getElementById('subjects-container');
+        console.log(container.length)
         subjects.forEach(subject => {
             const card = createSubjectCard(subject);
             container.appendChild(card);
