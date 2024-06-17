@@ -1,4 +1,4 @@
- function registerUser(event) {
+ /*function registerUser(event) {
         event.preventDefault();
 
         var formData = {
@@ -25,7 +25,7 @@
             }
         };
         xhr.send(JSON.stringify(formData));
-    }
+    }*/
 
     document.addEventListener("DOMContentLoaded", function() {
         fetchRoles();
