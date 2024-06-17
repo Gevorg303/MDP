@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+  /*  font-family: sans-serif;*/
 }
 form {
     width: 400px;
@@ -14,17 +14,21 @@ label {
 }
 
 .w-8{
-width:1.5rem;
+width:3rem;
 }
 .h-8{
-height:1.5rem;
+height:3rem;
 }
-
 .flex-row{
 display: flex;
 flex-direction: row;
 gap: 8px;
-padding: 16px;
+/*padding: 16px;*/
+}
+.flex-row a{
+padding-top: 12px;
+padding-left: 10px;
+padding-right: 10px;
 }
 .fill{
 flex-grow:1
@@ -158,22 +162,9 @@ button {
 
         }
 
-.w-8{
-width:1.5rem;
-}
-.h-8{
-height:1.5rem;
-}
 
-.flex-row{
-display: flex;
-flex-direction: row;
-gap: 8px;
-padding: 16px;
-}
-.fill{
-flex-grow:1
-}
+
+
 
 a, a:visited {text-decoration: none; color:white !important; }
 

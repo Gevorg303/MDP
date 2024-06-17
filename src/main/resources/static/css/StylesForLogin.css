@@ -25,17 +25,22 @@ h1{
     height: 100vh;
 }
 .w-8{
-width:1.5rem;
+width:3rem;
 }
 .h-8{
-height:1.5rem;
+height:3rem;
 }
 
 .flex-row{
 display: flex;
 flex-direction: row;
 gap: 8px;
-padding: 16px;
+/*padding: 16px;*/
+}
+.flex-row a{
+padding-top: 12px;
+padding-left: 10px;
+padding-right: 10px;
 }
 .fill{
 flex-grow:1

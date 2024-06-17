@@ -1,6 +1,9 @@
 body {
     overflow: auto;
 }
+.close {
+ text-align: right;
+}
 
 .modal {
     display: none;
