@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', fetchUser);
 document.addEventListener('DOMContentLoaded', fetchStudentCLass);
 const selectClass = document.getElementById('selectClass');
 selectClass.addEventListener('change', fetchSubjectsByClass);
+selectClass.addEventListener('click', fetchSubjectsByClass);
 
 
 // Функция для получения предметов по учителю и классу
@@ -38,6 +39,7 @@ async function fetchSubjectsByClass() {
         }
         const subjects = await response2.json();
         const select = document.getElementById('selectSubject');
+        select.innerHTML = ""
        // console.log(container)
         subjects.forEach(subject => {
              select.append(new Option(subject.subjectName,subject.id))
