@@ -1,7 +1,9 @@
 package com.example.smart_test.service;
 
 
+import com.example.smart_test.domain.Subject;
 import com.example.smart_test.domain.Theme;
+import com.example.smart_test.dto.SubjectDto;
 import com.example.smart_test.dto.ThemeDto;
 import com.example.smart_test.mapper.api.ThemeMapperInterface;
 import com.example.smart_test.repository.ThemeRepositoryInterface;
@@ -54,9 +56,20 @@ public class ThemeServiceImpl implements ThemeServiceInterface {
             throw new RuntimeException("Ошибка при получении всех тем: " + e.getMessage(), e);
         }
     }
-    private boolean findThemeById(Long id) {
+    @Override
+    public boolean findThemeById(Long id) {
         Optional<Theme> theme = themeRepository.findById(id);
         return theme.isPresent();
+    }
+    @Override
+    public ThemeDto getThemeById(Long id) {
+        try {
+            Theme theme = themeRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Предмет не найден"));
+            return themeMapper.toDTO(theme);
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }
     }
     @Override
     public List<ThemeDto>  getThemeBySubjectId(Long id) {

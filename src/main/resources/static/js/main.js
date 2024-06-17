@@ -17,12 +17,32 @@ function createSubjectCard(subject) {
      });
     return card;
 }
+async function CheckRole() {
+    const adduserbutton = document.getElementById('adduserbutton');
+    const edit = document.getElementById('openModal');
+    console.log(edit)
+    console.log(adduserbutton)
+     const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+            const user = await response.json();
+             if(user.role.role.toLowerCase()=="учитель" || user.role.role.toLowerCase()=="админ")
+             {
+             console.log("You are admin")
+             }
+             else{
+                                 adduserbutton.style.display = "none"
+                                     edit.style.display = "none"
+             }
+}
 
 // Получение предметов при загрузке страницы
 document.addEventListener('DOMContentLoaded', fetchSubjects);
 document.addEventListener('DOMContentLoaded', fetchUser);
 document.addEventListener('DOMContentLoaded', fetchStudentCLass);
 document.addEventListener('DOMContentLoaded', VisibleDelAdd);
+document.addEventListener('DOMContentLoaded', CheckRole);
 const selectClass = document.getElementById('selectClass');
 selectClass.addEventListener('change', fetchSubjectsByClass);
 selectClass.addEventListener('click', fetchSubjectsByClass);
@@ -85,6 +105,7 @@ async function Confirm() {
                     console.error('Ошибка получения данных:', error);
                 }
     }
+    location.reload()
 }
 
 //отображение меню выббора удаления и добавления предмета

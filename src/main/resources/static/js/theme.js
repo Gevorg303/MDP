@@ -34,7 +34,25 @@ async function fetchSubjects() {
         console.error('Ошибка получения данных:', error);
     }
 }*/
-
+async function CheckRole() {
+    const adduserbutton = document.getElementById('adduserbutton');
+    const edit = document.getElementById('openModal');
+    console.log(edit)
+    console.log(adduserbutton)
+     const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+            const user = await response.json();
+             if(user.role.role.toLowerCase()=="учитель" || user.role.role.toLowerCase()=="админ")
+             {
+             console.log("You are admin")
+             }
+             else{
+                                 adduserbutton.style.display = "none"
+                                     edit.style.display = "none"
+             }
+}
 // Функция для создания HTML-карточки темы
 function createSubjectCard(subject) {
     const card = document.createElement('div');
@@ -72,9 +90,106 @@ function createSubjectCard(subject) {
 
     return card;
 }
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
 
 // Получение тем при загрузке страницы
 document.addEventListener('DOMContentLoaded', fetchSubjects);
+document.addEventListener('DOMContentLoaded', VisibleDelAdd);
+document.addEventListener('DOMContentLoaded', CheckRole);
+const confirmButton= document.getElementById('confirmAction');
+confirmButton.addEventListener('click', Confirm);
+const radioAdd= document.getElementById('radioAdd');
+const radioDel= document.getElementById('radioDel');
+radioAdd.addEventListener('click', VisibleDelAdd);
+radioDel.addEventListener('click', VisibleDelAdd);
+
+
+async function Confirm() {
+    const itemName=document.getElementById('itemName');
+    const selectTheme=document.getElementById('selectTheme');
+    const subid = getCookie("sub");
+    if(radioAdd.checked == true)
+    {
+
+         try {
+            const response = await fetch('/subject/id:'+subid);
+                if (!response.ok) {
+                    throw new Error('Ошибка сети');
+                }
+            const subject = await response.json();
+           console.log(subject)
+        var formData = {
+            themeName: itemName.value,
+            subject: subject
+        };
+            console.log(formData)
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/theme/add", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+         } catch (error) {
+                console.error('Ошибка получения данных:', error);
+            }
+    }
+    else
+    {
+    try {
+            const response = await fetch('/theme/id:'+selectTheme.value);
+                            if (!response.ok) {
+                                throw new Error('Ошибка сети');
+                            }
+            const subject = await response.json();
+            console.log(subject)
+            var xhr = new XMLHttpRequest();
+            xhr.open("DELETE", "/theme/delete", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(subject));
+             } catch (error) {
+                    console.error('Ошибка получения данных:', error);
+                }
+    }
+    location.reload()
+}
+async function VisibleDelAdd() {
+    const radioAdd= document.getElementById('radioAdd');
+    const radioDel= document.getElementById('radioDel');
+
+    const itemName=document.getElementById('itemName');
+    const selectSubject=document.getElementById('selectTheme');
+
+    const labelitemName=document.getElementById('labelitemName');
+    const labelselectSubject=document.getElementById('labelselectTheme');
+
+    itemName.style.visibility = "hidden";
+    selectSubject.style.visibility = "hidden";
+
+    labelitemName.style.visibility = "hidden";
+    labelselectSubject.style.visibility = "hidden";
+
+    if(radioDel.checked == false)
+    {
+
+        itemName.style.visibility = "visible";
+        selectSubject.style.visibility = "hidden";
+
+         labelitemName.style.visibility = "visible";
+         labelselectSubject.style.visibility = "hidden";
+
+    }else
+    {
+            itemName.style.visibility = "hidden";
+            selectSubject.style.visibility = "visible";
+
+             labelitemName.style.visibility = "hidden";
+            labelselectSubject.style.visibility = "visible";
+    }
+}
+
 
 // Функция для получения тем с сервера
 async function fetchSubjects() {
@@ -89,6 +204,10 @@ async function fetchSubjects() {
             const card = createSubjectCard(subject);
             container.appendChild(card);
         });
+        const selectTheme = document.getElementById('selectTheme');
+        subjects.forEach(subject => {
+                    selectTheme.append(new Option(subject.themeName,subject.id));
+                });
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }

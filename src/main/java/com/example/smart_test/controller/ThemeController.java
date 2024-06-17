@@ -28,4 +28,8 @@ public class ThemeController {
     public List<ThemeDto> getAllThemesBySubjectId(@CookieValue("sub") Long id){
         return themeService.getThemeBySubjectId(id);
     }
+    @GetMapping("/id:{id}")
+    public ThemeDto getThemById(@PathVariable Long id){
+        return themeService.getThemeById(id);
+    }
 }

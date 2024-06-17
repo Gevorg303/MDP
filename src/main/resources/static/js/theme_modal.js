@@ -9,9 +9,9 @@ body.style.overflow = 'hidden';
 }
 
 //closeModalBtn.onclick = function() {
-modal.style.display = 'none';
-body.style.overflow = 'auto';
-}
+//modal.style.display = 'none';
+//body.style.overflow = 'auto';
+//}
 
 // Закрытие модального окна при клике вне его области
 window.onclick = function(event) {

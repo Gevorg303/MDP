@@ -16,7 +16,7 @@
     <div class="flex-row">
         <img class="w-8 h-8" src="/images/в.png" alt="Логотип">
         <a href="main">Предметы</a>
-        <a href="registration">Зарегистрировать пользователя</a>
+        <a id="adduserbutton" href="registration">Зарегистрировать пользователя</a>
         <a href="#Справка">Справка</a>
         <div class="fill"> </div>
         <a href="#"><i class="fas fa-bell"></i></a>
@@ -28,19 +28,26 @@
 <h1>Темы по предмету</h1>
 <div class="flex-col align-center mb-95">
     <div class="container" id="subjects-container"></div>
-    <button id="openModal" class="edit-button">Редактировать темы</button>
+    <button  id="openModal">Редактировать темы</button>
 </div>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <h2>Выберите действие и введите название темы:</h2>
         <label>
-            <input type="radio" name="action" value="delete"> Удалить тему
+            <input checked type="radio" name="action" id="radioAdd" value="add"> Добавить тему
         </label>
         <label>
-            <input type="radio" name="action" value="add"> Добавить тему
+            <input  type="radio" name="action" id="radioDel" value="delete"> Удалить тему
         </label>
+
         <br>
+        <label id="labelitemName" for="itemName">Название предмета</label>
         <input type="text" id="itemName" placeholder="Название темы">
+        <br>
+        <label  id="labelselectTheme" for="selectTheme">Выберите тему</label>
+        <select id="selectTheme">
+
+        </select>
         <br>
         <button id="confirmAction">Подтвердить</button>
     </div>
