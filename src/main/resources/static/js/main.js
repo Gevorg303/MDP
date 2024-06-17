@@ -207,11 +207,13 @@ async function fetchStudentCLass() {
             }
             const classes = await response2.json();
             const select = document.getElementById('selectClass');
+
             classes.forEach(subject => {
 
               // console.log(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address)
                select.append(new Option(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address,subject.id))
             });
+
 
            // console.log(select);
         }else{console.log("Пользователь - ученик")}
@@ -236,10 +238,18 @@ async function fetchSubjects() {
         const subjects = await response2.json();
         const container = document.getElementById('subjects-container');
        // console.log(container)
+       if(subjects.length !=0)
+                   {
         subjects.forEach(subject => {
             const card = createSubjectCard(subject);
             container.appendChild(card);
         });
+        }
+        else{
+        let empty = document.createElement('h3');
+        empty.innerHTML="У вас пока нет предметов."
+        container.appendChild(empty);
+        }
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }

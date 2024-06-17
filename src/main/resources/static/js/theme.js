@@ -101,6 +101,7 @@ function getCookie(name) {
 document.addEventListener('DOMContentLoaded', fetchSubjects);
 document.addEventListener('DOMContentLoaded', VisibleDelAdd);
 document.addEventListener('DOMContentLoaded', CheckRole);
+document.addEventListener('DOMContentLoaded', SetSubject);
 const confirmButton= document.getElementById('confirmAction');
 confirmButton.addEventListener('click', Confirm);
 const radioAdd= document.getElementById('radioAdd');
@@ -109,6 +110,23 @@ radioAdd.addEventListener('click', VisibleDelAdd);
 radioDel.addEventListener('click', VisibleDelAdd);
 
 
+async function SetSubject() {
+
+    const titlesubject=document.getElementById('titlesubject');
+    const subid = getCookie("sub");
+         try {
+            const response = await fetch('/subject/id:'+subid);
+                if (!response.ok) {
+                    throw new Error('Ошибка сети');
+                }
+            const subject = await response.json();
+           //console.log(subject)
+            titlesubject.innerHTML= subject.subjectName;
+         } catch (error) {
+                console.error('Ошибка получения данных:', error);
+            }
+
+}
 async function Confirm() {
     const itemName=document.getElementById('itemName');
     const selectTheme=document.getElementById('selectTheme');
@@ -132,6 +150,7 @@ async function Confirm() {
         xhr.open("POST", "/theme/add", true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(formData));
+         if (xhr.status === 200) {location.reload(true);}
          } catch (error) {
                 console.error('Ошибка получения данных:', error);
             }
@@ -149,11 +168,13 @@ async function Confirm() {
             xhr.open("DELETE", "/theme/delete", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify(subject));
+             if (xhr.status === 200) {location.reload(true);}
              } catch (error) {
                     console.error('Ошибка получения данных:', error);
                 }
     }
-    location.reload()
+
+location.reload();
 }
 async function VisibleDelAdd() {
     const radioAdd= document.getElementById('radioAdd');
@@ -198,16 +219,27 @@ async function fetchSubjects() {
         if (!response.ok) {
             throw new Error('Ошибка сети');
         }
-        const subjects = await response.json();
+        const subjects = await response.json();titlesubject
         const container = document.getElementById('subjects-container');
+        container.innerHTML ="";
+        if(subjects.length != 0){
         subjects.forEach(subject => {
             const card = createSubjectCard(subject);
             container.appendChild(card);
         });
         const selectTheme = document.getElementById('selectTheme');
-        subjects.forEach(subject => {
-                    selectTheme.append(new Option(subject.themeName,subject.id));
-                });
+        selectTheme.innerHTML ="";
+                subjects.forEach(subject => {
+                            selectTheme.append(new Option(subject.themeName,subject.id));
+                        });
+                        }
+        else{
+                let empty = document.createElement('h3');
+                empty.innerHTML="У вас пока нет тем в этом предмете."
+                container.appendChild(empty);
+        }
+
+
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }
