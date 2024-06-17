@@ -35,6 +35,7 @@ select option[value=""] {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s; /* плавный переход */
+    margin-bottom: 20px; /* отступ снизу */
 }
 
 .edit-button:hover {
