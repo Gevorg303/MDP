@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Регистрация</title>
     <link rel="stylesheet" href="../static/css/StyleForRegistration.css">
+    <link rel="stylesheet" href="../static/css/registration_modal.css">
+    <title>Регистрация</title>
+
 </head>
 
 <body>
@@ -41,21 +43,21 @@
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
-    <button type="submit">Зарегистрировать пользователя</button>
+    <button id="openModalButton">Зарегистрировать пользователя</button>
     <button type="button" onclick="window.history.back()">Назад</button>
-</form>
-
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Регистрация успешна!</h2>
-        <p>Логин: <span id="modalLogin"></span></p>
-        <p>Пароль: <span id="modalPassword"></span></p>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>Регистрация успешна!</h2>
+            <p>Логин: <span id="modalLogin"></span></p>
+            <p>Пароль: <span id="modalPassword"></span></p>
+        </div>
     </div>
-</div>
-<div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay"></div>
+</form>
 <script src="../js/registration.js"></script>
+<script src="../js/registration_modal.js"></script>
 </body>
+
 <footer>
     <p>&copy; Информация о сайте</p>
 </footer>
