@@ -1,6 +1,7 @@
 package com.example.smart_test.service;
 
 import com.example.smart_test.domain.Subject;
+import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.SubjectDto;
 import com.example.smart_test.mapper.api.SubjectMapperInterface;
 import com.example.smart_test.repository.SubjectRepositoryInterface;
@@ -76,6 +77,12 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
         }
 
     }
+
+    @Override
+    public List<Theme> getThemesBySubjectId(Long subjectId) {
+        return null;
+    }
+
     @Override
     public SubjectDto getSubjectById(Long id) {
         try {

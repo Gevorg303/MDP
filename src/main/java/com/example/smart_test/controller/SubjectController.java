@@ -1,10 +1,13 @@
 package com.example.smart_test.controller;
 
+import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.SubjectDto;
 import com.example.smart_test.dto.SubjectTeacherDto;
 import com.example.smart_test.repository.SubjectRepositoryInterface;
 import com.example.smart_test.service.api.SubjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,8 +38,17 @@ public class SubjectController {
     public List<SubjectDto> getSubjectTeacherDto(@PathVariable String login){
         return subjectService.getSubjectByLogin(login);
     }
+    @GetMapping("/id:{id}")
+    public SubjectDto getSubjectTeacherDto(@PathVariable Long id){
+        return subjectService.getSubjectById(id);
+    }
     @GetMapping("/class={idClass}/teacher={idTeacher}")
     public List<SubjectDto> getSubjectByClassAndTeacher(@PathVariable Long idClass,@PathVariable Long idTeacher){
         return subjectService.getSubjectByClassAndTeacher(idClass,idTeacher);
+    }
+    @GetMapping("/{subjectId}/themes")
+    public ResponseEntity<List<Theme>> getThemesBySubjectId(@PathVariable Long subjectId) {
+        List<Theme> themes = subjectService.getThemesBySubjectId(subjectId);
+        return new ResponseEntity<>(themes, HttpStatus.OK);
     }
 }

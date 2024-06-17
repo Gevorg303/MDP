@@ -65,13 +65,10 @@ public class TeacherClassServiceImpl implements TeacherClassServiceInterface {
         }
     }
     @Override
-    public List<TeacherClassDto>  getTeacherClassByClassAndTeacher(Long idClass,Long idTeacher) {
+    public TeacherClassDto getTeacherClassByClassAndTeacher(Long idClass,Long idTeacher) {
         try {
-            List<TeacherClass> subjects = teacherClassRepositoryInterface.findByClassAndTeacher(idClass,idTeacher);
-            List<TeacherClassDto> subjectDto = new ArrayList<>();
-            for (TeacherClass subject : subjects) {
-                subjectDto.add(teacherClassMapperInterface.toDto(subject));
-            }
+            TeacherClass subjects = teacherClassRepositoryInterface.findByClassAndTeacher(idClass,idTeacher);
+            TeacherClassDto subjectDto = teacherClassMapperInterface.toDto(subjects);
             return subjectDto;
         } catch (Exception e) {
             throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);

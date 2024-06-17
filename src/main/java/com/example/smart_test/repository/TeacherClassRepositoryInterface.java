@@ -13,5 +13,5 @@ public interface TeacherClassRepositoryInterface extends JpaRepository<TeacherCl
 
     @Query(value = "SELECT * FROM учитель_класс WHERE учитель_класс.идентификатор_класс = :idClass AND  учитель_класс.идентификатор_пользователя = :idTeacher",
             nativeQuery = true)
-    List<TeacherClass> findByClassAndTeacher(Long idClass,Long idTeacher);
+    TeacherClass findByClassAndTeacher(Long idClass,Long idTeacher);
 }

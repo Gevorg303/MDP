@@ -1,6 +1,7 @@
 // Функция для создания HTML-карточки предмета
 function createSubjectCard(subject) {
     const card = document.createElement('div');
+    card.id=subject.id
     card.className = 'card';
 
     const title = document.createElement('h2');
@@ -10,7 +11,10 @@ function createSubjectCard(subject) {
     const description = document.createElement('p');
     description.textContent = subject.description;
     card.appendChild(description);
-
+    card.addEventListener('click',function (event) {
+    window.location.href = '/test-smart/theme';
+    document.cookie = "sub="+subject.id+"; path=/;";
+     });
     return card;
 }
 
@@ -18,10 +22,122 @@ function createSubjectCard(subject) {
 document.addEventListener('DOMContentLoaded', fetchSubjects);
 document.addEventListener('DOMContentLoaded', fetchUser);
 document.addEventListener('DOMContentLoaded', fetchStudentCLass);
+document.addEventListener('DOMContentLoaded', VisibleDelAdd);
 const selectClass = document.getElementById('selectClass');
 selectClass.addEventListener('change', fetchSubjectsByClass);
 selectClass.addEventListener('click', fetchSubjectsByClass);
+const radioAdd= document.getElementById('radioAdd');
+const radioDel= document.getElementById('radioDel');
+radioAdd.addEventListener('click', VisibleDelAdd);
+radioDel.addEventListener('click', VisibleDelAdd);
+const confirmButton= document.getElementById('confirmAction');
+confirmButton.addEventListener('click', Confirm);
 
+
+async function Confirm() {
+    const itemName=document.getElementById('itemName');
+    const itemDescription=document.getElementById('itemDescription');
+    const selectClass=document.getElementById('selectClass');
+    const selectSubject=document.getElementById('selectSubject');
+    if(radioAdd.checked == true)
+    {
+
+         try {
+            const response = await fetch('/users/current');
+                if (!response.ok) {
+                    throw new Error('Ошибка сети');
+                }
+            const user = await response.json();
+            const response2 = await fetch('/teacherClass/classid='+selectClass.value+'/teacherid='+user.id);
+                            if (!response2.ok) {
+                                throw new Error('Ошибка сети');
+                            }
+           const teacher = await response2.json();
+           console.log(teacher)
+        var formData = {
+            subjectName: itemName.value,
+            description: itemDescription.value,
+            teacherClass: teacher,
+        };
+            console.log(formData)
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/subject/add", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+         } catch (error) {
+                console.error('Ошибка получения данных:', error);
+            }
+    }
+    else
+    {
+    try {
+            const response = await fetch('/subject/id:'+selectSubject.value);
+                            if (!response.ok) {
+                                throw new Error('Ошибка сети');
+                            }
+            const subject = await response.json();
+            console.log(subject)
+            var xhr = new XMLHttpRequest();
+            xhr.open("DELETE", "/subject/delete", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(subject));
+             } catch (error) {
+                    console.error('Ошибка получения данных:', error);
+                }
+    }
+}
+
+//отображение меню выббора удаления и добавления предмета
+async function VisibleDelAdd() {
+    const radioAdd= document.getElementById('radioAdd');
+    const radioDel= document.getElementById('radioDel');
+
+    const itemName=document.getElementById('itemName');
+    const itemDescription=document.getElementById('itemDescription');
+    const selectClass=document.getElementById('selectClass');
+    const selectSubject=document.getElementById('selectSubject');
+
+    const labelitemName=document.getElementById('labelitemName');
+    const labelitemDescription=document.getElementById('labelitemDescription');
+    const labelselectClass=document.getElementById('labelselectClass');
+    const labelselectSubject=document.getElementById('labelselectSubject');
+
+    itemName.style.visibility = "hidden";
+    itemDescription.style.visibility = "hidden";
+    selectClass.style.visibility = "hidden";
+    selectSubject.style.visibility = "hidden";
+
+    labelitemName.style.visibility = "hidden";
+    labelitemDescription.style.visibility = "hidden";
+    labelselectClass.style.visibility = "hidden";
+    labelselectSubject.style.visibility = "hidden";
+
+    if(radioDel.checked == false)
+    {
+
+        itemName.style.visibility = "visible";
+        itemDescription.style.visibility = "visible";
+        selectClass.style.visibility = "visible";
+        selectSubject.style.visibility = "hidden";
+
+         labelitemName.style.visibility = "visible";
+         labelitemDescription.style.visibility = "visible";
+         labelselectClass.style.visibility = "visible";
+         labelselectSubject.style.visibility = "hidden";
+
+    }else
+    {
+            itemName.style.visibility = "hidden";
+            itemDescription.style.visibility = "hidden";
+            selectClass.style.visibility = "visible";
+            selectSubject.style.visibility = "visible";
+
+             labelitemName.style.visibility = "hidden";
+            labelitemDescription.style.visibility = "hidden";
+            labelselectClass.style.visibility = "visible";
+            labelselectSubject.style.visibility = "visible";
+    }
+}
 
 // Функция для получения предметов по учителю и классу
 async function fetchSubjectsByClass() {
@@ -108,7 +224,7 @@ async function fetchSubjects() {
 //Получение имени пользователя
 async function fetchUser() {
     try {
-
+        document.cookie = "sub=; path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
         const response = await fetch('/users/current');
         if (!response.ok) {
             throw new Error('Ошибка сети');

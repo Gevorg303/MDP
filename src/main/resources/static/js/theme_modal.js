@@ -8,7 +8,7 @@ modal.style.display = 'block';
 body.style.overflow = 'hidden';
 }
 
-closeModalBtn.onclick = function() {
+//closeModalBtn.onclick = function() {
 modal.style.display = 'none';
 body.style.overflow = 'auto';
 }
