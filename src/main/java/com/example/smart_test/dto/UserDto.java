@@ -15,6 +15,7 @@ public class UserDto {
     private String passwordEncoder;
     private String surname;
     private Long roleId;
+    private Role role;
     private String password;
    // private Set<Role> roles;
 }

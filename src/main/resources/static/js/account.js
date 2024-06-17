@@ -20,7 +20,7 @@ async function fetchUserToAccount() {
         name.innerHTML = user.name;
         patronymic.innerHTML = user.patronymic;
         email.innerHTML = user.email;
-        role.innerHTML = user.roles.role;
+        role.innerHTML = user.role.role;
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }

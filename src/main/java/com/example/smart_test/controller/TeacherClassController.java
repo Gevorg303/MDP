@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("TeacherClass")
+@RequestMapping("/teacherClass")
 public class TeacherClassController {
     @Autowired
     private TeacherClassServiceInterface teacherClassService;
@@ -27,7 +27,7 @@ public class TeacherClassController {
         return teacherClassService.getAllTeacherClasses();
     }
 
-    @GetMapping("/classid={idClass};teacherid={idTeacher}")
+    @GetMapping("/classid={idClass}/teacherid={idTeacher}")
     public List<TeacherClassDto> getAllThemesBySubjectId(@PathVariable Long idClass,@PathVariable Long idTeacher){
         return teacherClassService.getTeacherClassByClassAndTeacher(idClass,idTeacher);
     }

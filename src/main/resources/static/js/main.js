@@ -19,34 +19,52 @@ document.addEventListener('DOMContentLoaded', fetchSubjects);
 document.addEventListener('DOMContentLoaded', fetchUser);
 document.addEventListener('DOMContentLoaded', fetchStudentCLass);
 const selectClass = document.getElementById('selectClass');
-select.addEventListener('onchange', fetchStudentCLass);
+selectClass.addEventListener('change', fetchSubjectsByClass);
+
+
+// Функция для получения предметов по учителю и классу
+async function fetchSubjectsByClass() {
+    try {
+        const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+        const user = await response.json();
+        const classId = document.getElementById('selectClass').value;
+        //console.log('/subject/classId='+classId+';teacherId='+user.id)
+        response2 = await fetch('/subject/class='+classId+'/teacher='+user.id);
+        if (!response2.ok) {
+            throw new Error('Ошибка сети');
+        }
+        const subjects = await response2.json();
+        const select = document.getElementById('selectSubject');
+       // console.log(container)
+        subjects.forEach(subject => {
+             select.append(new Option(subject.subjectName,subject.id))
+        });
+          //  console.log(subjects)
+    } catch (error) {
+        console.error('Ошибка получения данных:', error);
+    }
+}
 
 //получение классов учителя
 async function fetchStudentCLass() {
     try {
+
         const response = await fetch('/users/current');
             if (!response.ok) {
                 throw new Error('Ошибка поиска учителя');
             }
         const user = await response.json();
-        if(user.roles.role.toLowerCase()=="учитель" || user.roles.role.toLowerCase()=="админ")
+        console.log(user)
+        if(user.role.role.toLowerCase()=="учитель" || user.role.role.toLowerCase()=="админ")
         {
             response2 = await fetch('/student-class/teacherid='+user.id);
             if (!response2.ok) {
                 throw new Error('Ошибка вывода классов учителя');
             }
             const classes = await response2.json();
-            const select = document.getElementById('selectClass');
-            classes.forEach(subject => {
-
-              // console.log(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address)
-               select.append(new Option(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address,subject.id))
-            });
-            response3 = await fetch('/subject//classId='++';teacherId='user.id);
-                        if (!response2.ok) {
-                            throw new Error('Ошибка вывода классов учителя');
-                        }
-            const classes = await response3.json();
             const select = document.getElementById('selectClass');
             classes.forEach(subject => {
 
