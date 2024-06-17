@@ -173,8 +173,8 @@ async function Confirm() {
                     console.error('Ошибка получения данных:', error);
                 }
     }
-
-location.reload();
+setInterval(() => window.location.reload(), 100);
+//location.reload();
 }
 async function VisibleDelAdd() {
     const radioAdd= document.getElementById('radioAdd');
