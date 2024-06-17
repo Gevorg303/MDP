@@ -203,3 +203,17 @@ nav ul li.right a {
 .out-button {
              border-radius: 15px; /* Скругленные углы */
         }
+
+.back-button {
+    background-color: green; /* изменить цвет фона */
+    color: white; /* изменить цвет текста */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* плавный переход */
+}
+
+.back-button:hover {
+    background-color: darkgreen; /* изменение цвета при наведении */
+}

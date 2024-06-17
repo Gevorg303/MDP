@@ -285,3 +285,16 @@ h1 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     /* Более насыщенная тень при наведении */
 }
+.edit-button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* плавный переход */
+}
+
+.edit-button:hover {
+    background-color: darkgreen; /* потемнение при наведении */
+}

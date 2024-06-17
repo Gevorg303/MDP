@@ -16,18 +16,19 @@
         <h1>Вход</h1>
         <div class="fgf">
             <form id="loginForm">
-            <div>
+                <div>
 
-                <input type="text" name="username" id="username" placeholder="Логин" required>
-                <input type="password" name="password" id="password" placeholder="Пароль" required>
-                <h4 Visible="True" id="errorlabel"></h4>
+                    <input type="text" name="username" id="username" placeholder="Логин" required>
+                    <input type="password" name="password" id="password" placeholder="Пароль" required>
+                    <h4 Visible="True" id="errorlabel"></h4>
 
-            </div>
-            <a href="main"><button>Войти</button></a>
+                </div>
+                <a href="main"><button class="edit-button">Войти</button></a>
             </form>
         </div>
     </div>
 </div>
+
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', async (e) => {

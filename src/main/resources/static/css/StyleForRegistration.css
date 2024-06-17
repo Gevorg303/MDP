@@ -183,3 +183,13 @@ h1 {
     margin-top: 60px;
     text-shadow: 10px 10px 25px 10px rgba(34, 60, 80, 0.3);
 }
+
+button:first-of-type {
+    background-color: green;
+    color: white;
+}
+
+button:last-of-type {
+    background-color: darkgray;
+    color: white;
+}

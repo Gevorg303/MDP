@@ -43,14 +43,23 @@
     font-size: 1em;
     color: #666;
 }
+
 #subjects-container {
-    background-color: white;
-    transition: background-color 0.3s; /* добавляем плавный переход */
+    background-color: white; /* изменить цвет фона */
+    border-radius: 10px; /* добавить закругленные углы */
+    border: 2px solid green; /* добавить зеленую рамку */
+    padding: 20px; /* добавить отступы */
+    transition: background-color 0.3s; /* добавить плавный переход */
 }
+
 
 #card:hover {
     background-color: #7FFFD4; /* изменение цвета при наведении */
 }
 .card:hover {
     background-color: #f2f2f2;
+}
+#openModal {
+  display: block;
+  margin: 20px auto 0;
 }

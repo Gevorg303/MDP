@@ -27,3 +27,16 @@ button {
 select option[value=""] {
     color: grey; /* Серый цвет с прозрачностью */
 }
+.edit-button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* плавный переход */
+}
+
+.edit-button:hover {
+    background-color: darkgreen; /* изменение цвета при наведении */
+}

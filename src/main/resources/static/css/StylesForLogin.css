@@ -95,23 +95,25 @@ input {
     box-shadow: none;
 }
 
-.container button {
-    background-color: #1C7ECC; 
-    color: #fff; 
-    border: 0px solid #000; /*черная рамка*/
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 30%;
-    height: 5%;
-    border-radius: 15px;
-    font-size: 1em;
-    box-shadow: 0px 0px 25px 10px rgba(34, 60, 80, 0.3);
-}
+ .container button {
+     background-color: green;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 20px;
+     cursor: pointer;
+     transition: background-color 0.3s; /* плавный переход */
+     width: 30%;
+     height: 5%;
+     border-radius: 15px;
+     font-size: 1em;
+     box-shadow: 0px 0px 25px 10px rgba(34, 60, 80, 0.3);
+ }
 
-.container button:hover {
-    background-color: #10568E;
-}
+ .container button:hover {
+     background-color: darkgreen; /* изменение цвета при наведении */
+ }
+
 
 footer {
     background-color: #333; /*темно-серый цвет*/
@@ -143,4 +145,17 @@ footer {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+}
+.edit-button {
+    background-color: green !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 10px 20px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s !important; /* плавный переход */
+}
+
+.edit-button:hover {
+    background-color: darkgreen !important; /* изменение цвета при наведении */
 }
