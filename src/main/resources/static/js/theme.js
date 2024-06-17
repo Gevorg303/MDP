@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', fetchSubjects);
 // Функция для получения тем с сервера
 async function fetchSubjects() {
     try {
-        const response = await fetch('/theme/all');
+        const response = await fetch('/theme/getbysubject');
         if (!response.ok) {
             throw new Error('Ошибка сети');
         }
