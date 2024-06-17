@@ -17,6 +17,24 @@ function createSubjectCard(subject) {
      });
     return card;
 }
+
+// Получение предметов при загрузке страницы
+document.addEventListener('DOMContentLoaded', CheckRole);
+document.addEventListener('DOMContentLoaded', fetchSubjects);
+document.addEventListener('DOMContentLoaded', fetchUser);
+document.addEventListener('DOMContentLoaded', fetchStudentCLass);
+document.addEventListener('DOMContentLoaded', VisibleDelAdd);
+
+const selectClass = document.getElementById('selectClass');
+selectClass.addEventListener('change', fetchSubjectsByClass);
+selectClass.addEventListener('click', fetchSubjectsByClass);
+const radioAdd= document.getElementById('radioAdd');
+const radioDel= document.getElementById('radioDel');
+radioAdd.addEventListener('click', VisibleDelAdd);
+radioDel.addEventListener('click', VisibleDelAdd);
+const confirmButton= document.getElementById('confirmAction');
+confirmButton.addEventListener('click', Confirm);
+
 async function CheckRole() {
     const adduserbutton = document.getElementById('adduserbutton');
     const edit = document.getElementById('openModal');
@@ -33,25 +51,9 @@ async function CheckRole() {
              }
              else{
                                  adduserbutton.style.display = "none"
-                                     edit.style.display = "none"
+                                 edit.style.display = "none"
              }
 }
-
-// Получение предметов при загрузке страницы
-document.addEventListener('DOMContentLoaded', fetchSubjects);
-document.addEventListener('DOMContentLoaded', fetchUser);
-document.addEventListener('DOMContentLoaded', fetchStudentCLass);
-document.addEventListener('DOMContentLoaded', VisibleDelAdd);
-document.addEventListener('DOMContentLoaded', CheckRole);
-const selectClass = document.getElementById('selectClass');
-selectClass.addEventListener('change', fetchSubjectsByClass);
-selectClass.addEventListener('click', fetchSubjectsByClass);
-const radioAdd= document.getElementById('radioAdd');
-const radioDel= document.getElementById('radioDel');
-radioAdd.addEventListener('click', VisibleDelAdd);
-radioDel.addEventListener('click', VisibleDelAdd);
-const confirmButton= document.getElementById('confirmAction');
-confirmButton.addEventListener('click', Confirm);
 
 
 async function Confirm() {

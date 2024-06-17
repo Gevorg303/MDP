@@ -71,16 +71,16 @@ function createSubjectCard(subject) {
     const list = document.createElement('ul');
 
     const items = [
-        { text: 'Входной тест', url: '/test-smart/login1' },
-        { text: 'Тренажёр', url: '/test-smart/login2' },
-        { text: 'Итоговый тест', url: '/test-smart/login3' }
+        { text: 'Входной тест'  },
+        { text: 'Тренажёр'},
+        { text: 'Итоговый тест' }
     ];
 
     items.forEach(item => {
         const listItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.className = 'link';
-        link.href = item.url;
+        const link = document.createElement('button');
+        link.className = 'testlink';
+      //  link.href = item.url;
         link.textContent = item.text;
         listItem.appendChild(link);
         list.appendChild(listItem);
