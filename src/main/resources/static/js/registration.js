@@ -27,11 +27,38 @@
         xhr.send(JSON.stringify(formData));
     }*/
 
-    document.addEventListener("DOMContentLoaded", function() {
+ /*   document.addEventListener("DOMContentLoaded", function() {
         fetchRoles();
-    });
+    });*/
+    document.addEventListener('DOMContentLoaded', CheckRole);
 
-    function fetchRoles() {
+async function CheckRole() {
+    const adduserbutton = document.getElementById('adduserbutton');
+    const edit = document.getElementById('openModal');
+    console.log(edit)
+    console.log(adduserbutton)
+     const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+            const user = await response.json();
+             if( user.role.role.toLowerCase()=="админ")
+             {
+              fetchRoles(user.role.role)
+             console.log("You are admin")
+             }
+             else{
+               if(user.role.role.toLowerCase()=="учитель")
+               {
+                        fetchRoles(user.role.role)
+               }
+               else{
+                     window.location.href = 'main';
+                 }
+             }
+}
+
+    function fetchRoles(userrole) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/role/all", true);
         xhr.onreadystatechange = function () {
@@ -39,12 +66,27 @@
                 if (xhr.status === 200) {
                     var roles = JSON.parse(xhr.responseText);
                     var roleSelect = document.getElementById("role");
-                    roles.forEach(function(role) {
-                        var option = document.createElement("option");
-                        option.value = role.id;
-                        option.textContent = role.role;
-                        roleSelect.appendChild(option);
-                    });
+                    if(userrole.toLowerCase() == "админ")
+                    {
+                        roles.forEach(function(role) {
+                            var option = document.createElement("option");
+                            option.value = role.id;
+                            option.textContent = role.role;
+                            roleSelect.appendChild(option);
+                        });
+                    }
+                    if(userrole.toLowerCase() == "учитель")
+                        {
+                            roles.forEach(function(role) {
+                            if(role.role.toLowerCase() == "ученик")
+                            {
+                                var option = document.createElement("option");
+                                option.value = role.id;
+                                option.textContent = role.role;
+                                roleSelect.appendChild(option);
+                            }
+                            });
+                        }
                 } else {
                     console.error('Не удалось загрузить роли. Статус:', xhr.status);
                 }
