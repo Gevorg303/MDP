@@ -264,7 +264,7 @@ async function fetchUser() {
         }
         const user = await response.json();
         const welcome = document.getElementById('welcome');
-        welcome.innerHTML = "Здравствуйте, "+user.name;
+        welcome.innerHTML = "Здравствуйте, "+user.name + " ("+user.role.role + ")";
        /* subjects.forEach(subject => {
             const card = createSubjectCard(subject);
             container.appendChild(card);
