@@ -18,4 +18,6 @@ public interface SubjectServiceInterface {
     SubjectDto getSubjectById(Long id);
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<SubjectDto>  getSubjectByLogin(String login);
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<SubjectDto>  getSubjectByClassAndTeacher(Long idClass,Long idTeacher);
 }
