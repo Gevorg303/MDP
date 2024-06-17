@@ -4,7 +4,9 @@ package com.example.smart_test.service;
 
 
 import com.example.smart_test.domain.TeacherClass;
+import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.TeacherClassDto;
+import com.example.smart_test.dto.ThemeDto;
 import com.example.smart_test.mapper.api.TeacherClassMapperInterface;
 import com.example.smart_test.repository.TeacherClassRepositoryInterface;
 import com.example.smart_test.service.api.TeacherClassServiceInterface;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,7 +64,20 @@ public class TeacherClassServiceImpl implements TeacherClassServiceInterface {
             throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
         }
     }
+    @Override
+    public List<TeacherClassDto>  getTeacherClassByClassAndTeacher(Long idClass,Long idTeacher) {
+        try {
+            List<TeacherClass> subjects = teacherClassRepositoryInterface.findByClassAndTeacher(idClass,idTeacher);
+            List<TeacherClassDto> subjectDto = new ArrayList<>();
+            for (TeacherClass subject : subjects) {
+                subjectDto.add(teacherClassMapperInterface.toDto(subject));
+            }
+            return subjectDto;
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }
 
+    }
 
 
     private boolean findTeacherClassById(Long id) {

@@ -14,4 +14,7 @@ public interface TeacherClassServiceInterface {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<TeacherClassDto> getAllTeacherClasses();
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<TeacherClassDto>  getTeacherClassByClassAndTeacher(Long idClass,Long idTeacher);
 }

@@ -63,6 +63,20 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
 
     }
     @Override
+    public List<SubjectDto>  getSubjectByClassAndTeacher(Long idClass,Long idTeacher) {
+        try {
+            List<Subject> subjects = subjectRepository.findByClassAndTeacher(idClass,idTeacher);
+            List<SubjectDto> subjectDto = new ArrayList<>();
+            for (Subject subject : subjects) {
+                subjectDto.add(subjectMapper.toDTO(subject));
+            }
+            return subjectDto;
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }
+
+    }
+    @Override
     public SubjectDto getSubjectById(Long id) {
         try {
             Subject subject = subjectRepository.findById(id)

@@ -17,6 +17,50 @@ function createSubjectCard(subject) {
 // Получение предметов при загрузке страницы
 document.addEventListener('DOMContentLoaded', fetchSubjects);
 document.addEventListener('DOMContentLoaded', fetchUser);
+document.addEventListener('DOMContentLoaded', fetchStudentCLass);
+const selectClass = document.getElementById('selectClass');
+select.addEventListener('onchange', fetchStudentCLass);
+
+//получение классов учителя
+async function fetchStudentCLass() {
+    try {
+        const response = await fetch('/users/current');
+            if (!response.ok) {
+                throw new Error('Ошибка поиска учителя');
+            }
+        const user = await response.json();
+        if(user.roles.role.toLowerCase()=="учитель" || user.roles.role.toLowerCase()=="админ")
+        {
+            response2 = await fetch('/student-class/teacherid='+user.id);
+            if (!response2.ok) {
+                throw new Error('Ошибка вывода классов учителя');
+            }
+            const classes = await response2.json();
+            const select = document.getElementById('selectClass');
+            classes.forEach(subject => {
+
+              // console.log(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address)
+               select.append(new Option(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address,subject.id))
+            });
+            response3 = await fetch('/subject//classId='++';teacherId='user.id);
+                        if (!response2.ok) {
+                            throw new Error('Ошибка вывода классов учителя');
+                        }
+            const classes = await response3.json();
+            const select = document.getElementById('selectClass');
+            classes.forEach(subject => {
+
+              // console.log(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address)
+               select.append(new Option(subject.numberOfInstitution +" "+ subject.letterDesignation +" "+ subject.educationalInstitution.nameOfTheInstitution + " "+ subject.educationalInstitution.address,subject.id))
+            });
+
+           // console.log(select);
+        }else{console.log("Пользователь - ученик")}
+    } catch (error) {
+        console.error('Ошибка получения данных:', error);
+    }
+}
+
 
 // Функция для получения предметов с сервера
 async function fetchSubjects() {
@@ -32,7 +76,7 @@ async function fetchSubjects() {
         }
         const subjects = await response2.json();
         const container = document.getElementById('subjects-container');
-        console.log(container.length)
+       // console.log(container)
         subjects.forEach(subject => {
             const card = createSubjectCard(subject);
             container.appendChild(card);
@@ -41,7 +85,7 @@ async function fetchSubjects() {
         console.error('Ошибка получения данных:', error);
     }
 }
-
+//Получение имени пользователя
 async function fetchUser() {
     try {
 

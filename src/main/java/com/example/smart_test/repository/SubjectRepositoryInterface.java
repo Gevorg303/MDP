@@ -12,4 +12,8 @@ public interface SubjectRepositoryInterface extends JpaRepository<Subject, Long>
          nativeQuery = true)
     List<Subject> findByLogin(String login);
 
+    @Query(value = "SELECT идентификатор_предмет, название_предмета, описание_предмета, предмет.идентификатор_учитель_класс FROM предмет INNER JOIN учитель_класс on предмет.идентификатор_учитель_класс = учитель_класс.идентификатор_учитель_класс WHERE идентификатор_класс = :idClass and идентификатор_пользователя = :idTeacher",
+            nativeQuery = true)
+    List<Subject> findByClassAndTeacher(Long idClass,Long idTeacher);
+
 }

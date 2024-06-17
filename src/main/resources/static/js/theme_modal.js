@@ -1,58 +1,22 @@
+// Открытие и закрытие модального окна
 var modal = document.getElementById('myModal');
-    var openModalBtn = document.getElementById('openModal');
-    var confirmActionBtn = document.getElementById('confirmAction');
-    var action;
-    var itemNameInput = document.getElementById('itemName');
+var openModalBtn = document.getElementById('openModal');
+var closeModalBtn = document.getElementById('closeModal');
 
-    openModalBtn.onclick = function() {
-        modal.style.display = 'block';
-    }
+openModalBtn.onclick = function() {
+modal.style.display = 'block';
+body.style.overflow = 'hidden';
+}
 
-    confirmActionBtn.onclick = function() {
-        var actionRadios = document.getElementsByName('action');
-        var itemName = itemNameInput.value;
+closeModalBtn.onclick = function() {
+modal.style.display = 'none';
+body.style.overflow = 'auto';
+}
 
-        for (var i = 0; i < actionRadios.length; i++) {
-            if (actionRadios[i].checked) {
-                action = actionRadios[i].value;
-                break;
-            }
-        }
-
-        if (action === 'delete') {
-            fetch('/theme/delete', {
-                method: 'DELETE'
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Тема удалена: ' + itemName);
-                } else {
-                    console.error('Ошибка удаления темы');
-                }
-            });
-        } else if (action === 'add') {
-            fetch('/theme/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ itemName: itemName })
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Тема добавлена: ' + itemName);
-                } else {
-                    console.error('Ошибка добавления темы');
-                }
-            });5
-        }
-
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-
+// Закрытие модального окна при клике вне его области
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = 'none';
+body.style.overflow = 'auto';
+}
+}
