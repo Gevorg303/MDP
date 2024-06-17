@@ -17,21 +17,18 @@
         <a href="main">Предметы</a>
         <a href="registration">Зарегистрировать пользователя</a>
         <a href="#Справка">Справка</a>
-        <div class="fill"> </div>
+        <div class="fill"></div>
         <a href="#"><i class="fas fa-bell"></i></a>
         <a href="#"><i class="fas fa-comments"></i></a>
         <a href="account">Личный кабинет</a>
-
     </div>
 </nav>
 <h1>Регистрация</h1>
 
-<form id="loginForm">
+<form id="registrationForm" onsubmit="registerUser(event)">
     <label for="role">Роль:</label>
-    <select id="role" name="role" required>
-        <option value="Учитель">Учитель</option>
-        <option value="Ученик">Ученик</option>
-    </select>
+    <select id="role" name="role" required></select>
+
     <label for="surname">Фамилия:</label>
     <input type="text" id="surname" name="surname" required>
 
@@ -44,9 +41,10 @@
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
-    <button type="button" onclick="registerUser()">Зарегистрировать пользователя</button>
-    <button type="submit" onclick="window.history.back()='login'">Назад</button>
+    <button type="submit">Зарегистрировать пользователя</button>
+    <button type="button" onclick="window.history.back()">Назад</button>
 </form>
+
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -56,36 +54,7 @@
     </div>
 </div>
 <div class="overlay" id="overlay"></div>
-
-<script>
-    function registerUser() {
-        // Get form data
-        var formData = {
-            role: document.getElementById("role").value,
-            surname: document.getElementById("surname").value,
-            name: document.getElementById("name").value,
-            patronymic: document.getElementById("patronymic").value,
-            email: document.getElementById("email").value
-        };
-
-        // Send form data to server using AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/users/add", true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Handle successful response
-                console.log(xhr.responseText);
-                alert('Регистрация успешно завершена!');
-            } else if (xhr.readyState === 4 && xhr.status !== 200) {
-                // Handle error response
-                console.error('Ошибка регистрации:', xhr.responseText);
-                alert('Ошибка регистрации. Пожалуйста, попробуйте еще раз.');
-            }
-        };
-        xhr.send(JSON.stringify(formData));
-    }
-</script>
+<script src="../js/registration.js"></script>
 </body>
 <footer>
     <p>&copy; Информация о сайте</p>

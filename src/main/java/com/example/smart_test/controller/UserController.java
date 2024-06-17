@@ -6,6 +6,8 @@ import com.example.smart_test.mapper.api.UserMapperInterface;
 import com.example.smart_test.security.JWTUtils;
 import com.example.smart_test.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +24,14 @@ public class UserController {
     private JWTUtils jwtUtils;
 
     @PostMapping("/add")
-    public UserDto addUser(@RequestBody UserDto userDto) {
-        return userService.addUser(userDto);
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+        try {
+            UserDto createdUser = userService.addUser(userDto);
+            return ResponseEntity.ok(createdUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-
     @DeleteMapping("/delete")
     public void deleteUser(@RequestBody UserDto userDto) {
         userService.deleteUser(userDto);

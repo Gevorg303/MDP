@@ -14,6 +14,7 @@ public class UserDto {
     private String patronymic;
     private String passwordEncoder;
     private String surname;
-    private Role roles;
+    private Long roleId;
+    private String password;
    // private Set<Role> roles;
 }
