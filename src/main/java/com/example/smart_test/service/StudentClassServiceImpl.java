@@ -1,7 +1,9 @@
 package com.example.smart_test.service;
 
 import com.example.smart_test.domain.StudentClass;
+import com.example.smart_test.domain.TeacherClass;
 import com.example.smart_test.dto.StudentClassDto;
+import com.example.smart_test.dto.TeacherClassDto;
 import com.example.smart_test.mapper.api.StudentClassMapperInterface;
 import com.example.smart_test.repository.StudentClassRepositoryInterface;
 import com.example.smart_test.service.api.StudentClassServiceInterface;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -56,6 +59,20 @@ public class StudentClassServiceImpl implements StudentClassServiceInterface {
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении всех классов: " + e.getMessage(), e);
         }
+    }
+    @Override
+    public List<StudentClassDto>  getStudentClassByTeacherId(Long id) {
+        try {
+            List<StudentClass> subjects = studentClassRepository.findByTeacherId(id);
+            List<StudentClassDto> subjectDto = new ArrayList<>();
+            for (StudentClass subject : subjects) {
+                subjectDto.add(studentClassMapper.toDTO(subject));
+            }
+            return subjectDto;
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
+        }
+
     }
     private boolean findStudentClassById(Long id) {
         Optional<StudentClass> studentClass = studentClassRepository.findById(id);

@@ -2,6 +2,7 @@ package com.example.smart_test.controller;
 
 
 import com.example.smart_test.dto.TeacherClassDto;
+import com.example.smart_test.dto.ThemeDto;
 import com.example.smart_test.service.api.TeacherClassServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,5 +25,10 @@ public class TeacherClassController {
     @GetMapping("/all")
     public List<TeacherClassDto> getTeacherClassDto(){
         return teacherClassService.getAllTeacherClasses();
+    }
+
+    @GetMapping("/classid={idClass};teacherid={idTeacher}")
+    public List<TeacherClassDto> getAllThemesBySubjectId(@PathVariable Long idClass,@PathVariable Long idTeacher){
+        return teacherClassService.getTeacherClassByClassAndTeacher(idClass,idTeacher);
     }
 }
