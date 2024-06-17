@@ -31,26 +31,26 @@
 
 <div id="myModal" class="modal">
     <div class="modal-content">
-        <h2>Выберите действие и введите название предмета:</h2>
+        <h2>Выберите действие и введите данные:</h2>
         <label>
-            <input checked type="radio" name="action" value="add"> Добавить предмет
+            <input checked type="radio" name="action" id="radioAdd" value="add"> Добавить предмет
         </label>
         <label>
-            <input type="radio" name="action" value="delete"> Удалить предмет
+            <input type="radio" name="action" id="radioDel" value="delete"> Удалить предмет
         </label>
 
         <br>
-        <label for="itemName">Название предмета</label>
+        <label id="labelitemName" for="itemName">Название предмета</label>
         <input type="text" id="itemName" placeholder="">
         </br>
-        <label for="itemDescription">Описание предмета</label>
+        <label id="labelitemDescription" for="itemDescription">Описание предмета</label>
         <input type="text" id="itemDescription" placeholder="">
         </br>
-        <label for="selectClass">Выберите класс</label>
+        <label id="labelselectClass" for="selectClass">Выберите класс</label>
         <select id="selectClass">
         </select>
         <br>
-        <label for="selectSubject">Выберите предмет</label>
+        <label  id="labelselectSubject" for="selectSubject">Выберите предмет</label>
             <select id="selectSubject">
 
             </select>

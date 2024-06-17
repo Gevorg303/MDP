@@ -1,6 +1,7 @@
 package com.example.smart_test.service;
 
 import com.example.smart_test.domain.Subject;
+import com.example.smart_test.domain.Task;
 import com.example.smart_test.dto.SubjectDto;
 import com.example.smart_test.mapper.api.SubjectMapperInterface;
 import com.example.smart_test.repository.SubjectRepositoryInterface;
@@ -88,8 +89,6 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
     }
     @Override
     public void deleteSubjectDto(SubjectDto dto) {
-        /*Удаление будем реализовывать потом
-         * когда будет сделана авторизация по JWT ключу
-         * */
+        subjectRepository.deleteById(dto.getId());
     }
 }

@@ -28,7 +28,7 @@ public class TeacherClassController {
     }
 
     @GetMapping("/classid={idClass}/teacherid={idTeacher}")
-    public List<TeacherClassDto> getAllThemesBySubjectId(@PathVariable Long idClass,@PathVariable Long idTeacher){
+    public TeacherClassDto getAllThemesBySubjectId(@PathVariable Long idClass,@PathVariable Long idTeacher){
         return teacherClassService.getTeacherClassByClassAndTeacher(idClass,idTeacher);
     }
 }
