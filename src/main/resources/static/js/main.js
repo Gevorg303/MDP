@@ -1,6 +1,7 @@
 // Функция для создания HTML-карточки предмета
 function createSubjectCard(subject) {
     const card = document.createElement('div');
+    card.id=subject.id
     card.className = 'card';
 
     const title = document.createElement('h2');
@@ -10,7 +11,10 @@ function createSubjectCard(subject) {
     const description = document.createElement('p');
     description.textContent = subject.description;
     card.appendChild(description);
-
+    card.addEventListener('click',function (event) {
+    window.location.href = '/test-smart/theme';
+    document.cookie = "sub="+subject.id+"; path=/;";
+     });
     return card;
 }
 
@@ -220,7 +224,7 @@ async function fetchSubjects() {
 //Получение имени пользователя
 async function fetchUser() {
     try {
-
+        document.cookie = "sub=; path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
         const response = await fetch('/users/current');
         if (!response.ok) {
             throw new Error('Ошибка сети');
