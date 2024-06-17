@@ -12,6 +12,6 @@ public interface UserRepositoryInterface extends JpaRepository <User, Long> {
     @Query(value = "SELECT MAX(идентификатор_пользователя) AS MaxUserId\n" +
             "FROM пользователь;",
             nativeQuery = true)
-    String maxIdUser();
+    int maxIdUser();
     public Optional<User> findByLogin(String login);
 }

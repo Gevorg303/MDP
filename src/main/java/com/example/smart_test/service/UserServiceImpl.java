@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserServiceInterface {
         if (dto.getPatronymic() != null && !dto.getPatronymic().isEmpty()) {
             patronymicInitials = dto.getPatronymic().substring(0, Math.min(dto.getPatronymic().length(), 2));
         }
-        String id = userRepository.maxIdUser();
+        int id = userRepository.maxIdUser() + 1;
         return surnameInitials + nameInitials + patronymicInitials + id;
     }
 
