@@ -1,5 +1,6 @@
 package com.example.smart_test.service.api;
 
+import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.SubjectDto;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,4 +21,6 @@ public interface SubjectServiceInterface {
     public List<SubjectDto>  getSubjectByLogin(String login);
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<SubjectDto>  getSubjectByClassAndTeacher(Long idClass,Long idTeacher);
+
+    List<Theme> getThemesBySubjectId(Long subjectId);
 }
