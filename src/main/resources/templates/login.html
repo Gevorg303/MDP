@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="../static/css/StylesForLogin.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../static/js/login.js">
 </head>
-
 <body>
+
+<div class="header-bar">
+    <img src="../static/images/лого.png" class="header-logo">
+</div>
 
 <div class="container">
     <div class="login-box">
@@ -23,12 +26,11 @@
                     <h4 Visible="True" id="errorlabel"></h4>
 
                 </div>
-                <a href="main"><button class="edit-button">Войти</button></a>
+                <a href="main"><button>Войти</button></a>
             </form>
         </div>
     </div>
 </div>
-
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
