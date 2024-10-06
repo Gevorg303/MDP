@@ -222,3 +222,34 @@ nav ul li.right a {
 .back-button:hover {
     background-color: darkgreen; /* изменение цвета при наведении */
 }
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5%;
+}
+
+.photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.data {
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .data {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
