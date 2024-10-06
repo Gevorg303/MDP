@@ -20,11 +20,9 @@
         <div class="fgf">
             <form id="loginForm">
                 <div>
-
                     <input type="text" name="username" id="username" placeholder="Логин" required>
                     <input type="password" name="password" id="password" placeholder="Пароль" required>
                     <h4 Visible="True" id="errorlabel"></h4>
-
                 </div>
                 <a href="main"><button>Войти</button></a>
             </form>
@@ -55,17 +53,14 @@
                 const token = await response.text();
                 console.log('Received token:', token);
                 document.cookie = "jwtToken="+token+"; path=/;"
-               // alert('Login successful');
                 window.location.href = 'main'; // Перенаправление на другую страницу
             } else {
                 const errorText = await response.text();
                 console.error('Login failed:', errorText);
-              //  alert('Login failed');
-              errorlabel.innerHTML = "Неверный пароль или логин";
+                errorlabel.innerHTML = "Неверный пароль или логин";
             }
         } catch (error) {
             console.error('Error during fetch:', error);
-          //  alert('An error occurred. Check the console for more details.');
         }
     });
 </script>

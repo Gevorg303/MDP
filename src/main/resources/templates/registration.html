@@ -47,9 +47,20 @@
     <input type="email" id="email" name="email" oninput="this.value = this.value.replace(/\s+/g, '');" maxlength="80" required>
     <div class="error-message" id="emailError"></div>
 
+    <label for="educationPlace">Место обучения:</label>
+    <select id="educationPlace" name="educationPlace" required>
+    </select>
+    <div class="error-message" id="educationPlaceError"></div>
+
+    <label for="class">Класс:</label>
+    <select id="class" name="class" required>
+    </select>
+    <div class="error-message" id="classError"></div>
+
     <button type="submit">Зарегистрировать пользователя</button>
     <button type="button" onclick="window.history.back()">Назад</button>
 </form>
+
 
 <script>
         function validateForm() {
