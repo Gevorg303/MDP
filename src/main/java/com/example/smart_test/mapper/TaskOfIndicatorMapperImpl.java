@@ -8,15 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskOfIndicatorMapperImpl implements TaskOfIndicatorMapperInterface {
     @Override
-    public TaskOfIndicatorDto toDto(TaskOfIndicator entity){
+    public TaskOfIndicatorDto toDto(TaskOfIndicator entity) {
         TaskOfIndicatorDto dto = new TaskOfIndicatorDto();
         dto.setId(entity.getId());
         dto.setIndicator(entity.getIndicator());
         dto.setTask(entity.getTask());
         return dto;
     }
+
     @Override
-    public TaskOfIndicator toEntity(TaskOfIndicatorDto dto){
+    public TaskOfIndicator toEntity(TaskOfIndicatorDto dto) {
         TaskOfIndicator entity = new TaskOfIndicator();
         entity.setId(dto.getId());
         entity.setIndicator(dto.getIndicator());

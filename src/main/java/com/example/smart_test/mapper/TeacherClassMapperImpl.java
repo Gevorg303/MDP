@@ -8,15 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class TeacherClassMapperImpl implements TeacherClassMapperInterface {
     @Override
-    public TeacherClassDto toDto(TeacherClass entity){
+    public TeacherClassDto toDto(TeacherClass entity) {
         TeacherClassDto dto = new TeacherClassDto();
         dto.setId(entity.getId());
         dto.setUser(entity.getUser());
         dto.setStudentClass(entity.getStudentClass());
         return dto;
     }
+
     @Override
-    public TeacherClass toEntity(TeacherClassDto dto){
+    public TeacherClass toEntity(TeacherClassDto dto) {
         TeacherClass entity = new TeacherClass();
         entity.setId(dto.getId());
         entity.setUser(dto.getUser());

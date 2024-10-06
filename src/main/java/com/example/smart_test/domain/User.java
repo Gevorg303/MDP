@@ -39,6 +39,7 @@ public class User implements UserDetails {
     public String getPassword() {
         return passwordEncoder;
     }
+
     @Override
     public String getUsername() {
         return login;

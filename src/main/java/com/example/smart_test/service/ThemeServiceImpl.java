@@ -24,13 +24,14 @@ public class ThemeServiceImpl implements ThemeServiceInterface {
     private ThemeRepositoryInterface themeRepository;
     @Autowired
     private ThemeMapperInterface themeMapper;
+
     @Override
     public ThemeDto addThemeDto(ThemeDto dto) {
-        try{
+        try {
             Theme theme = themeMapper.toEntity(dto);
             theme = themeRepository.save(theme);
             return themeMapper.toDTO(theme);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении темы: " + e.getMessage(), e);
         }
     }
@@ -56,11 +57,13 @@ public class ThemeServiceImpl implements ThemeServiceInterface {
             throw new RuntimeException("Ошибка при получении всех тем: " + e.getMessage(), e);
         }
     }
+
     @Override
     public boolean findThemeById(Long id) {
         Optional<Theme> theme = themeRepository.findById(id);
         return theme.isPresent();
     }
+
     @Override
     public ThemeDto getThemeById(Long id) {
         try {
@@ -71,8 +74,9 @@ public class ThemeServiceImpl implements ThemeServiceInterface {
             throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
         }
     }
+
     @Override
-    public List<ThemeDto>  getThemeBySubjectId(Long id) {
+    public List<ThemeDto> getThemeBySubjectId(Long id) {
         try {
             List<Theme> subjects = themeRepository.findBySubjectId(id);
             List<ThemeDto> subjectDto = new ArrayList<>();

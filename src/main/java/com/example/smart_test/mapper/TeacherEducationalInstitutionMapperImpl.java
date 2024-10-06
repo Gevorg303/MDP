@@ -8,15 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class TeacherEducationalInstitutionMapperImpl implements TeacherEducationalInstitutionMapperInterface {
     @Override
-    public TeacherEducationalInstitutionDto toDto(TeacherEducationalInstitution entity){
+    public TeacherEducationalInstitutionDto toDto(TeacherEducationalInstitution entity) {
         TeacherEducationalInstitutionDto dto = new TeacherEducationalInstitutionDto();
         dto.setId(entity.getId());
         dto.setUser(entity.getUser());
         dto.setEducationalInstitution(entity.getEducationalInstitution());
         return dto;
     }
+
     @Override
-    public TeacherEducationalInstitution toEntity(TeacherEducationalInstitutionDto dto){
+    public TeacherEducationalInstitution toEntity(TeacherEducationalInstitutionDto dto) {
         TeacherEducationalInstitution entity = new TeacherEducationalInstitution();
         entity.setId(dto.getId());
         entity.setUser(dto.getUser());

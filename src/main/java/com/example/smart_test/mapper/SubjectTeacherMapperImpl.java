@@ -15,8 +15,9 @@ public class SubjectTeacherMapperImpl implements SubjectTeacherMapperInterface {
         dto.setUser(entity.getUser());
         return dto;
     }
+
     @Override
-    public SubjectTeacher toEntity(SubjectTeacherDto dto){
+    public SubjectTeacher toEntity(SubjectTeacherDto dto) {
         SubjectTeacher entity = new SubjectTeacher();
         entity.setId(dto.getId());
         entity.setSubject(dto.getSubject());

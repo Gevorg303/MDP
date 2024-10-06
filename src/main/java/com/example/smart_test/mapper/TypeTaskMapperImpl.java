@@ -8,14 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class TypeTaskMapperImpl implements TypeTaskMapperInterface {
     @Override
-    public TypeTaskDto toDto(TypeTask entity){
+    public TypeTaskDto toDto(TypeTask entity) {
         TypeTaskDto dto = new TypeTaskDto();
         dto.setId(entity.getId());
         dto.setTaskTypeName(entity.getTaskTypeName());
         return dto;
     }
+
     @Override
-    public TypeTask toEntity(TypeTaskDto dto){
+    public TypeTask toEntity(TypeTaskDto dto) {
         TypeTask entity = new TypeTask();
         entity.setId(dto.getId());
         entity.setTaskTypeName(dto.getTaskTypeName());

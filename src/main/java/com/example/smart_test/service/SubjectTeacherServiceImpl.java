@@ -26,16 +26,16 @@ public class SubjectTeacherServiceImpl implements SubjectTeacherServiceInterface
     private SubjectTeacherMapperInterface subjectTeacherMapperInterface;
 
     @Override
-    public SubjectTeacherDto addSubjectTeacherDto(SubjectTeacherDto dto){
-        try{
+    public SubjectTeacherDto addSubjectTeacherDto(SubjectTeacherDto dto) {
+        try {
             SubjectTeacher subjectTeacher = subjectTeacherMapperInterface.toEntity(dto);
             subjectTeacher = subjectTeacherRepositoryInterface.save(subjectTeacher);
             return subjectTeacherMapperInterface.toDto(subjectTeacher);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteSubjectTeacherDto(SubjectTeacherDto dto) {
         if (findSubjectTeacherById(dto.getId())) {

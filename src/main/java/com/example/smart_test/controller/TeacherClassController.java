@@ -14,21 +14,24 @@ import java.util.List;
 public class TeacherClassController {
     @Autowired
     private TeacherClassServiceInterface teacherClassService;
+
     @PostMapping("/add")
-    public TeacherClassDto addTeacherClassDto(@RequestBody TeacherClassDto teacherClassDto){
+    public TeacherClassDto addTeacherClassDto(@RequestBody TeacherClassDto teacherClassDto) {
         return teacherClassService.addTeacherClassDto(teacherClassDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTeacherClassDto(@RequestBody TeacherClassDto teacherClassDto){
+    public void deleteTeacherClassDto(@RequestBody TeacherClassDto teacherClassDto) {
         teacherClassService.deleteTeacherClassDto(teacherClassDto);
     }
+
     @GetMapping("/all")
-    public List<TeacherClassDto> getTeacherClassDto(){
+    public List<TeacherClassDto> getTeacherClassDto() {
         return teacherClassService.getAllTeacherClasses();
     }
 
     @GetMapping("/classid={idClass}/teacherid={idTeacher}")
-    public TeacherClassDto getAllThemesBySubjectId(@PathVariable Long idClass,@PathVariable Long idTeacher){
-        return teacherClassService.getTeacherClassByClassAndTeacher(idClass,idTeacher);
+    public TeacherClassDto getAllThemesBySubjectId(@PathVariable Long idClass, @PathVariable Long idTeacher) {
+        return teacherClassService.getTeacherClassByClassAndTeacher(idClass, idTeacher);
     }
 }

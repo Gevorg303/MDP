@@ -75,12 +75,14 @@ public class UserServiceImpl implements UserServiceInterface {
                 .orElseThrow(() -> new IllegalArgumentException("Пользователь с таким логином не найден"));
         return userMapper.toDTO(userEntity);
     }
+
     @Override
     public User getUserByLogin(String login) {
         User userEntity = userRepository.findByLogin(login)
                 .orElseThrow(() -> new IllegalArgumentException("Пользователь с таким логином не найден"));
         return userEntity;
     }
+
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentLogin = authentication.getName();

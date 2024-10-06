@@ -5,5 +5,6 @@ import com.example.smart_test.dto.TaskDto;
 
 public interface TaskMapperInterface {
     public TaskDto toDto(Task entity);
+
     public Task toEntity(TaskDto dto);
 }

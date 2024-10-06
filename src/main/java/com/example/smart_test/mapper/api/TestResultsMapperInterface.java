@@ -5,5 +5,6 @@ import com.example.smart_test.dto.TestResultsDto;
 
 public interface TestResultsMapperInterface {
     public TestResultsDto toDto(TestResults entity);
+
     public TestResults toEntity(TestResultsDto dto);
 }

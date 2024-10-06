@@ -25,16 +25,16 @@ public class TypeTestServiceImpl implements TypeTestServiceInterface {
     private TypeTestMapperInterface typeTestMapperInterface;
 
     @Override
-    public TypeTestDto addTypeTestDto(TypeTestDto dto){
-        try{
+    public TypeTestDto addTypeTestDto(TypeTestDto dto) {
+        try {
             TypeTest typeTest = typeTestMapperInterface.toEntity(dto);
             typeTest = typeTestRepositoryInterface.save(typeTest);
             return typeTestMapperInterface.toDto(typeTest);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTypeTestDto(TypeTestDto dto) {
         if (typeTestRepositoryInterface.findById(dto.getId()).isPresent()) {

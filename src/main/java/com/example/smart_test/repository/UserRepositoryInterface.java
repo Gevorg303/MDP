@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepositoryInterface extends JpaRepository <User, Long> {
+public interface UserRepositoryInterface extends JpaRepository<User, Long> {
     @Query(value = "SELECT MAX(идентификатор_пользователя) AS MaxUserId\n" +
             "FROM пользователь;",
             nativeQuery = true)
     int maxIdUser();
+
     Optional<User> findByLogin(String login);
 }

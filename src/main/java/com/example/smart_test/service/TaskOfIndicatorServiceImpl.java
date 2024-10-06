@@ -26,16 +26,16 @@ public class TaskOfIndicatorServiceImpl implements TaskOfIndicatorServiceInterfa
     private TaskOfIndicatorMapperInterface taskOfIndicatorMapperInterface;
 
     @Override
-    public TaskOfIndicatorDto addTaskOfIndicatorDto(TaskOfIndicatorDto dto){
-        try{
+    public TaskOfIndicatorDto addTaskOfIndicatorDto(TaskOfIndicatorDto dto) {
+        try {
             TaskOfIndicator taskOfIndicator = taskOfIndicatorMapperInterface.toEntity(dto);
             taskOfIndicator = taskOfIndicatorRepositoryInterface.save(taskOfIndicator);
             return taskOfIndicatorMapperInterface.toDto(taskOfIndicator);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTaskOfIndicatorDto(TaskOfIndicatorDto dto) {
         if (findTaskOfIndicatorById(dto.getId())) {

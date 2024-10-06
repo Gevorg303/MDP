@@ -13,16 +13,19 @@ import java.util.List;
 public class TeacherEducationalInstitutionController {
     @Autowired
     private TeacherEducationalInstitutionServiceInterface teacherEducationalInstitutionService;
+
     @PostMapping("/add")
-    public TeacherEducationalInstitutionDto addTeacherEducationalInstitutionDto(@RequestBody TeacherEducationalInstitutionDto teacherEducationalInstitutionDto){
+    public TeacherEducationalInstitutionDto addTeacherEducationalInstitutionDto(@RequestBody TeacherEducationalInstitutionDto teacherEducationalInstitutionDto) {
         return teacherEducationalInstitutionService.addTeacherEducationalInstitutionDto(teacherEducationalInstitutionDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTeacherEducationalInstitutionDto(@RequestBody TeacherEducationalInstitutionDto teacherEducationalInstitutionDto){
+    public void deleteTeacherEducationalInstitutionDto(@RequestBody TeacherEducationalInstitutionDto teacherEducationalInstitutionDto) {
         teacherEducationalInstitutionService.deleteTeacherEducationalInstitutionDto(teacherEducationalInstitutionDto);
     }
+
     @GetMapping("/all")
-    public List<TeacherEducationalInstitutionDto> getTeacherEducationalInstitutionDto(){
+    public List<TeacherEducationalInstitutionDto> getTeacherEducationalInstitutionDto() {
         return teacherEducationalInstitutionService.getAllTeacherEducationalInstitutions();
     }
 }

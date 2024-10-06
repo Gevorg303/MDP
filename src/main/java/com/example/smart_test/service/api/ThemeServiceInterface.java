@@ -16,10 +16,11 @@ public interface ThemeServiceInterface {
     List<ThemeDto> getAllTheme();
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<ThemeDto>  getThemeBySubjectId(Long id);
+    public List<ThemeDto> getThemeBySubjectId(Long id);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public boolean findThemeById(Long id);
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ThemeDto getThemeById(Long id);
 }

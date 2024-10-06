@@ -13,16 +13,19 @@ import java.util.List;
 public class TypeTaskController {
     @Autowired
     private TypeTaskServiceInterface typeTaskService;
+
     @PostMapping("/add")
-    public TypeTaskDto addTypeTaskDto(@RequestBody TypeTaskDto typeTaskDto){
+    public TypeTaskDto addTypeTaskDto(@RequestBody TypeTaskDto typeTaskDto) {
         return typeTaskService.addTypeTaskDto(typeTaskDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTypeTaskDto(@RequestBody TypeTaskDto typeTaskDto){
+    public void deleteTypeTaskDto(@RequestBody TypeTaskDto typeTaskDto) {
         typeTaskService.deleteTypeTaskDto(typeTaskDto);
     }
+
     @GetMapping("/all")
-    public List<TypeTaskDto> getTypeTaskDto(){
+    public List<TypeTaskDto> getTypeTaskDto() {
         return typeTaskService.getAllTypeTasks();
     }
 }

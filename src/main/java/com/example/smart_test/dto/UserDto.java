@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Set;
+
 @Data
 public class UserDto {
     private Long id;
@@ -17,5 +18,5 @@ public class UserDto {
     private Long roleId;
     private Role role;
     private String password;
-   // private Set<Role> roles;
+    // private Set<Role> roles;
 }

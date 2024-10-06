@@ -17,10 +17,12 @@ public interface SubjectServiceInterface {
     List<SubjectDto> getAllSubject();
 
     SubjectDto getSubjectById(Long id);
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<SubjectDto>  getSubjectByLogin(String login);
+    public List<SubjectDto> getSubjectByLogin(String login);
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<SubjectDto>  getSubjectByClassAndTeacher(Long idClass,Long idTeacher);
+    public List<SubjectDto> getSubjectByClassAndTeacher(Long idClass, Long idTeacher);
 
     List<Theme> getThemesBySubjectId(Long subjectId);
 }

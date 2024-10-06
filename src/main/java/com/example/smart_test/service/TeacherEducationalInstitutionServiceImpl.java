@@ -26,16 +26,16 @@ public class TeacherEducationalInstitutionServiceImpl implements TeacherEducatio
     private TeacherEducationalInstitutionMapperInterface teacherEducationalInstitutionMapperInterface;
 
     @Override
-    public TeacherEducationalInstitutionDto addTeacherEducationalInstitutionDto(TeacherEducationalInstitutionDto dto){
-        try{
+    public TeacherEducationalInstitutionDto addTeacherEducationalInstitutionDto(TeacherEducationalInstitutionDto dto) {
+        try {
             TeacherEducationalInstitution teacherEducationalInstitution = teacherEducationalInstitutionMapperInterface.toEntity(dto);
             teacherEducationalInstitution = teacherEducationalInstitutionRepositoryInterface.save(teacherEducationalInstitution);
             return teacherEducationalInstitutionMapperInterface.toDto(teacherEducationalInstitution);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTeacherEducationalInstitutionDto(TeacherEducationalInstitutionDto dto) {
         if (findTeacherEducationalInstitutionById(dto.getId())) {

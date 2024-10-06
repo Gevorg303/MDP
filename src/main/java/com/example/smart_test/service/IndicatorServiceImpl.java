@@ -26,16 +26,16 @@ public class IndicatorServiceImpl implements IndicatorServiceInterface {
     private IndicatorMapperInterface indicatorMapperInterface;
 
     @Override
-    public IndicatorDto addIndicatorDto(IndicatorDto dto){
-        try{
+    public IndicatorDto addIndicatorDto(IndicatorDto dto) {
+        try {
             Indicator indicator = indicatorMapperInterface.toEntity(dto);
             indicator = indicatorRepositoryInterface.save(indicator);
             return indicatorMapperInterface.toDTO(indicator);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteIndicatorDto(IndicatorDto dto) {
         if (findIndicatorById(dto.getId())) {

@@ -25,16 +25,16 @@ public class TypeTaskServiceImpl implements TypeTaskServiceInterface {
     private TypeTaskMapperInterface typeTaskMapperInterface;
 
     @Override
-    public TypeTaskDto addTypeTaskDto(TypeTaskDto dto){
-        try{
+    public TypeTaskDto addTypeTaskDto(TypeTaskDto dto) {
+        try {
             TypeTask typeTask = typeTaskMapperInterface.toEntity(dto);
             typeTask = typeTaskRepositoryInterface.save(typeTask);
             return typeTaskMapperInterface.toDto(typeTask);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTypeTaskDto(TypeTaskDto dto) {
         if (typeTaskRepositoryInterface.findById(dto.getId()).isPresent()) {

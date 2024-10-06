@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestMapperImpl implements TestMapperInterface {
     @Override
-    public TestDto toDto(Test entity){
+    public TestDto toDto(Test entity) {
         TestDto dto = new TestDto();
         dto.setId(entity.getId());
         dto.setPassageTime(entity.getPassageTime());
@@ -21,6 +21,7 @@ public class TestMapperImpl implements TestMapperInterface {
         dto.setTestPassword(entity.getTestPassword());
         return dto;
     }
+
     @Override
     public Test toEntity(TestDto dto) {
         Test entity = new Test();

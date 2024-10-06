@@ -13,16 +13,19 @@ import java.util.List;
 public class TypeTestController {
     @Autowired
     private TypeTestServiceInterface typeTestService;
+
     @PostMapping("/add")
-    public TypeTestDto addTypeTestDto(@RequestBody TypeTestDto typeTestDto){
+    public TypeTestDto addTypeTestDto(@RequestBody TypeTestDto typeTestDto) {
         return typeTestService.addTypeTestDto(typeTestDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTypeTestDto(@RequestBody TypeTestDto typeTestDto){
+    public void deleteTypeTestDto(@RequestBody TypeTestDto typeTestDto) {
         typeTestService.deleteTypeTestDto(typeTestDto);
     }
+
     @GetMapping("/all")
-    public List<TypeTestDto> getTypeTestDto(){
+    public List<TypeTestDto> getTypeTestDto() {
         return typeTestService.getAllTypeTests();
     }
 }

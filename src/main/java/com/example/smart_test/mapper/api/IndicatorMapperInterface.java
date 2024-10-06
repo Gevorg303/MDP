@@ -5,5 +5,6 @@ import com.example.smart_test.dto.IndicatorDto;
 
 public interface IndicatorMapperInterface {
     public IndicatorDto toDTO(Indicator entity);
+
     public Indicator toEntity(IndicatorDto dto);
 }

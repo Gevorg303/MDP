@@ -1,8 +1,6 @@
 package com.example.smart_test.service;
 
 
-
-
 import com.example.smart_test.domain.TeacherClass;
 import com.example.smart_test.domain.Theme;
 import com.example.smart_test.dto.TeacherClassDto;
@@ -32,16 +30,16 @@ public class TeacherClassServiceImpl implements TeacherClassServiceInterface {
     private TeacherClassMapperInterface teacherClassMapperInterface;
 
     @Override
-    public TeacherClassDto addTeacherClassDto(TeacherClassDto dto){
-        try{
+    public TeacherClassDto addTeacherClassDto(TeacherClassDto dto) {
+        try {
             TeacherClass teacherClass = teacherClassMapperInterface.toEntity(dto);
             teacherClass = teacherClassRepositoryInterface.save(teacherClass);
             return teacherClassMapperInterface.toDto(teacherClass);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTeacherClassDto(TeacherClassDto dto) {
         if (findTeacherClassById(dto.getId())) {
@@ -64,10 +62,11 @@ public class TeacherClassServiceImpl implements TeacherClassServiceInterface {
             throw new RuntimeException("Ошибка при получении всех индикаторов: " + e.getMessage(), e);
         }
     }
+
     @Override
-    public TeacherClassDto getTeacherClassByClassAndTeacher(Long idClass,Long idTeacher) {
+    public TeacherClassDto getTeacherClassByClassAndTeacher(Long idClass, Long idTeacher) {
         try {
-            TeacherClass subjects = teacherClassRepositoryInterface.findByClassAndTeacher(idClass,idTeacher);
+            TeacherClass subjects = teacherClassRepositoryInterface.findByClassAndTeacher(idClass, idTeacher);
             TeacherClassDto subjectDto = teacherClassMapperInterface.toDto(subjects);
             return subjectDto;
         } catch (Exception e) {

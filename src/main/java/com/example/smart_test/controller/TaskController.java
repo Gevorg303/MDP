@@ -12,16 +12,24 @@ import java.util.List;
 public class TaskController {
     @Autowired
     private TaskServiceInterface taskService;
+
     @PostMapping("/add")
-    public TaskDto addTaskDto(@RequestBody TaskDto taskDto){
+    public TaskDto addTaskDto(@RequestBody TaskDto taskDto) {
         return taskService.addTaskDto(taskDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTaskDto(@RequestBody TaskDto taskDto){
+    public void deleteTaskDto(@RequestBody TaskDto taskDto) {
         taskService.deleteTaskDto(taskDto);
     }
+
     @GetMapping("/all")
-    public List<TaskDto> getTaskDto(){
+    public List<TaskDto> getTaskDto() {
         return taskService.getAllTasks();
     }
+
+//    @GetMapping("/find-test")
+//    public List<TaskDto> getFindTask() {
+//        return taskService.getFindTask();
+//    }
 }

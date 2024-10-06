@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestResultsMapperImpl implements TestResultsMapperInterface {
     @Override
-    public TestResultsDto toDto(TestResults entity){
+    public TestResultsDto toDto(TestResults entity) {
         TestResultsDto dto = new TestResultsDto();
         dto.setId(entity.getId());
         dto.setTask(entity.getTask());
@@ -18,8 +18,9 @@ public class TestResultsMapperImpl implements TestResultsMapperInterface {
         dto.setResultOfTheIndicator(entity.isResultOfTheIndicator());
         return dto;
     }
+
     @Override
-    public TestResults toEntity(TestResultsDto dto){
+    public TestResults toEntity(TestResultsDto dto) {
         TestResults entity = new TestResults();
         entity.setId(dto.getId());
         entity.setTask(dto.getTask());

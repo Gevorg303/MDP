@@ -12,24 +12,29 @@ import java.util.List;
 public class ThemeController {
     @Autowired
     private ThemeServiceInterface themeService;
+
     @PostMapping("/add")
-    public ThemeDto addTheme(@RequestBody ThemeDto themeDto){
+    public ThemeDto addTheme(@RequestBody ThemeDto themeDto) {
         return themeService.addThemeDto(themeDto);
     }
+
     @DeleteMapping("/delete")
-    public void  deleteTheme(@RequestBody ThemeDto themeDto){
+    public void deleteTheme(@RequestBody ThemeDto themeDto) {
         themeService.deleteThemeDto(themeDto);
     }
+
     @GetMapping("/all")
-    public List<ThemeDto> getAllTheme(){
+    public List<ThemeDto> getAllTheme() {
         return themeService.getAllTheme();
     }
+
     @GetMapping("/getbysubject")
-    public List<ThemeDto> getAllThemesBySubjectId(@CookieValue("sub") Long id){
+    public List<ThemeDto> getAllThemesBySubjectId(@CookieValue("sub") Long id) {
         return themeService.getThemeBySubjectId(id);
     }
+
     @GetMapping("/id:{id}")
-    public ThemeDto getThemById(@PathVariable Long id){
+    public ThemeDto getThemById(@PathVariable Long id) {
         return themeService.getThemeById(id);
     }
 }

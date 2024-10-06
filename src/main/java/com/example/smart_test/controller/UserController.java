@@ -32,6 +32,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
     @DeleteMapping("/delete")
     public void deleteUser(@RequestBody UserDto userDto) {
         userService.deleteUser(userDto);
@@ -46,11 +47,12 @@ public class UserController {
     public UserDto getUserByLogin(@RequestBody UserDto userDto) {
         return userService.getUserByLogin(userDto);
     }
-  /*  @GetMapping("/current")
-    public UserDto getCurrentUser() {
-        User currentUser = userService.getCurrentUser();
-        return userMapper.toDTO(currentUser);
-    }*/
+
+    /*  @GetMapping("/current")
+      public UserDto getCurrentUser() {
+          User currentUser = userService.getCurrentUser();
+          return userMapper.toDTO(currentUser);
+      }*/
     @GetMapping("/current")
     public UserDto getCurrentUser(@CookieValue("jwtToken") String token) {
         var jwt = jwtUtils.decodeToken(token);

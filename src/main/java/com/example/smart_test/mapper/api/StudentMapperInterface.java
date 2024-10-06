@@ -5,5 +5,6 @@ import com.example.smart_test.dto.UserDto;
 
 public interface StudentMapperInterface {
     UserDto toDTO(User entity);
+
     User toEntity(UserDto dto);
 }

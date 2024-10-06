@@ -8,12 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class TypeTestMapperImpl implements TypeTestMapperInterface {
     @Override
-    public TypeTestDto toDto(TypeTest entity){
+    public TypeTestDto toDto(TypeTest entity) {
         TypeTestDto dto = new TypeTestDto();
         dto.setId(entity.getId());
         dto.setNameOfTestType(entity.getNameOfTestType());
         return dto;
     }
+
     @Override
     public TypeTest toEntity(TypeTestDto dto) {
         TypeTest entity = new TypeTest();

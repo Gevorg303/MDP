@@ -25,6 +25,7 @@ public class StudentClassServiceImpl implements StudentClassServiceInterface {
     private StudentClassMapperInterface studentClassMapper;
     @Autowired
     private StudentClassRepositoryInterface studentClassRepository;
+
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public StudentClassDto addStudentClassDto(StudentClassDto dto) {
@@ -32,7 +33,7 @@ public class StudentClassServiceImpl implements StudentClassServiceInterface {
             StudentClass studentClass = studentClassMapper.toEntity(dto);
             studentClass = studentClassRepository.save(studentClass);
             return studentClassMapper.toDTO(studentClass);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении класса: " + e.getMessage(), e);
         }
     }
@@ -60,8 +61,9 @@ public class StudentClassServiceImpl implements StudentClassServiceInterface {
             throw new RuntimeException("Ошибка при получении всех классов: " + e.getMessage(), e);
         }
     }
+
     @Override
-    public List<StudentClassDto>  getStudentClassByTeacherId(Long id) {
+    public List<StudentClassDto> getStudentClassByTeacherId(Long id) {
         try {
             List<StudentClass> subjects = studentClassRepository.findByTeacherId(id);
             List<StudentClassDto> subjectDto = new ArrayList<>();
@@ -74,6 +76,7 @@ public class StudentClassServiceImpl implements StudentClassServiceInterface {
         }
 
     }
+
     private boolean findStudentClassById(Long id) {
         Optional<StudentClass> studentClass = studentClassRepository.findById(id);
         return studentClass.isPresent();

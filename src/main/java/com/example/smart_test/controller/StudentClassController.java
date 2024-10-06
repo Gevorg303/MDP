@@ -13,6 +13,7 @@ import java.util.List;
 public class StudentClassController {
     @Autowired
     private StudentClassServiceInterface serviceInterface;
+
     @PostMapping("/add")
     public StudentClassDto addStudentClass(@RequestBody StudentClassDto dto) {
         return serviceInterface.addStudentClassDto(dto);
@@ -29,7 +30,7 @@ public class StudentClassController {
     }
 
     @GetMapping("/teacherid={id}")
-    public List<StudentClassDto> getAllStudentClassByTeacherId(@PathVariable Long id){
+    public List<StudentClassDto> getAllStudentClassByTeacherId(@PathVariable Long id) {
         return serviceInterface.getStudentClassByTeacherId(id);
     }
 }

@@ -13,16 +13,19 @@ import java.util.List;
 public class TestResultsController {
     @Autowired
     private TestResultsServiceInterface testResultsService;
+
     @PostMapping("/add")
-    public TestResultsDto addTestResultsDto(@RequestBody TestResultsDto testResultsDto){
+    public TestResultsDto addTestResultsDto(@RequestBody TestResultsDto testResultsDto) {
         return testResultsService.addTestResultsDto(testResultsDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTestResultsDto(@RequestBody TestResultsDto testResultsDto){
+    public void deleteTestResultsDto(@RequestBody TestResultsDto testResultsDto) {
         testResultsService.deleteTestResultsDto(testResultsDto);
     }
+
     @GetMapping("/all")
-    public List<TestResultsDto> getTestResultsDto(){
+    public List<TestResultsDto> getTestResultsDto() {
         return testResultsService.getAllTestResults();
     }
 }

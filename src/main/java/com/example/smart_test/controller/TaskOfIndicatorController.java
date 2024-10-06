@@ -14,16 +14,19 @@ import java.util.List;
 public class TaskOfIndicatorController {
     @Autowired
     private TaskOfIndicatorServiceInterface taskOfIndicatorService;
+
     @PostMapping("/add")
-    public TaskOfIndicatorDto addTaskOfIndicatorDto(@RequestBody TaskOfIndicatorDto taskOfIndicatorDto){
+    public TaskOfIndicatorDto addTaskOfIndicatorDto(@RequestBody TaskOfIndicatorDto taskOfIndicatorDto) {
         return taskOfIndicatorService.addTaskOfIndicatorDto(taskOfIndicatorDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteTaskOfIndicatorDto(@RequestBody TaskOfIndicatorDto taskOfIndicatorDto){
+    public void deleteTaskOfIndicatorDto(@RequestBody TaskOfIndicatorDto taskOfIndicatorDto) {
         taskOfIndicatorService.deleteTaskOfIndicatorDto(taskOfIndicatorDto);
     }
+
     @GetMapping("/all")
-    public List<TaskOfIndicatorDto> getTaskOfIndicatorDto(){
+    public List<TaskOfIndicatorDto> getTaskOfIndicatorDto() {
         return taskOfIndicatorService.getAllTaskOfIndicators();
     }
 }

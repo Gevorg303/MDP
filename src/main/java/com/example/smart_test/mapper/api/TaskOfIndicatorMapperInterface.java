@@ -5,5 +5,6 @@ import com.example.smart_test.dto.TaskOfIndicatorDto;
 
 public interface TaskOfIndicatorMapperInterface {
     public TaskOfIndicatorDto toDto(TaskOfIndicator entity);
+
     public TaskOfIndicator toEntity(TaskOfIndicatorDto dto);
 }

@@ -12,6 +12,7 @@ import java.util.List;
 public class IndicatorController {
     @Autowired
     private IndicatorServiceInterface indicatorService;
+
     @PostMapping("/add")
     public IndicatorDto addIndicator(@RequestBody IndicatorDto indicatorDto) {
         return indicatorService.addIndicatorDto(indicatorDto);

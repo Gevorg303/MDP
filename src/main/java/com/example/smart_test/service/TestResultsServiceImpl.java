@@ -25,16 +25,16 @@ public class TestResultsServiceImpl implements TestResultsServiceInterface {
     private TestResultsMapperInterface testResultsMapperInterface;
 
     @Override
-    public TestResultsDto addTestResultsDto(TestResultsDto dto){
-        try{
+    public TestResultsDto addTestResultsDto(TestResultsDto dto) {
+        try {
             TestResults testResults = testResultsMapperInterface.toEntity(dto);
             testResults = testResultsRepositoryInterface.save(testResults);
             return testResultsMapperInterface.toDto(testResults);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Ошибка при добавлении индикатора: " + e.getMessage(), e);
         }
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteTestResultsDto(TestResultsDto dto) {
         if (testResultsRepositoryInterface.findById(dto.getId()).isPresent()) {

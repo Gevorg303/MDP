@@ -21,6 +21,7 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
     private SubjectRepositoryInterface subjectRepository;
     @Autowired
     private SubjectMapperInterface subjectMapper;
+
     @Override
     public SubjectDto addSubjectDto(SubjectDto dto) {
         try {
@@ -33,7 +34,6 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
     }
 
 
-
     @Override
     public List<SubjectDto> getAllSubject() {
         try {
@@ -43,30 +43,31 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
                 subjectDto.add(subjectMapper.toDTO(subject));
             }
             return subjectDto;
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException("Не удалось получить список предметов." + e.getMessage(), e);
         }
 
     }
 
     @Override
-    public List<SubjectDto>  getSubjectByLogin(String login) {
-       try {
-           List<Subject> subjects = subjectRepository.findByLogin(login);
-           List<SubjectDto> subjectDto = new ArrayList<>();
-           for (Subject subject : subjects) {
-               subjectDto.add(subjectMapper.toDTO(subject));
-           }
-           return subjectDto;
+    public List<SubjectDto> getSubjectByLogin(String login) {
+        try {
+            List<Subject> subjects = subjectRepository.findByLogin(login);
+            List<SubjectDto> subjectDto = new ArrayList<>();
+            for (Subject subject : subjects) {
+                subjectDto.add(subjectMapper.toDTO(subject));
+            }
+            return subjectDto;
         } catch (Exception e) {
             throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
         }
 
     }
+
     @Override
-    public List<SubjectDto>  getSubjectByClassAndTeacher(Long idClass,Long idTeacher) {
+    public List<SubjectDto> getSubjectByClassAndTeacher(Long idClass, Long idTeacher) {
         try {
-            List<Subject> subjects = subjectRepository.findByClassAndTeacher(idClass,idTeacher);
+            List<Subject> subjects = subjectRepository.findByClassAndTeacher(idClass, idTeacher);
             List<SubjectDto> subjectDto = new ArrayList<>();
             for (Subject subject : subjects) {
                 subjectDto.add(subjectMapper.toDTO(subject));
@@ -93,6 +94,7 @@ public class SubjectServiceImpl implements SubjectServiceInterface {
             throw new RuntimeException("Не удалось получить предмет: " + e.getMessage(), e);
         }
     }
+
     @Override
     public void deleteSubjectDto(SubjectDto dto) {
         /*Удаление будем реализовывать потом

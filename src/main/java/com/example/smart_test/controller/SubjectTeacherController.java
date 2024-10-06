@@ -14,16 +14,19 @@ import java.util.List;
 public class SubjectTeacherController {
     @Autowired
     private SubjectTeacherServiceInterface subjectService;
+
     @PostMapping("/add")
-    public SubjectTeacherDto addSubjectTeacherDto(@RequestBody SubjectTeacherDto subjectDto){
+    public SubjectTeacherDto addSubjectTeacherDto(@RequestBody SubjectTeacherDto subjectDto) {
         return subjectService.addSubjectTeacherDto(subjectDto);
     }
+
     @DeleteMapping("/delete")
-    public void deleteSubjectTeacherDto(@RequestBody SubjectTeacherDto subjectDto){
+    public void deleteSubjectTeacherDto(@RequestBody SubjectTeacherDto subjectDto) {
         subjectService.deleteSubjectTeacherDto(subjectDto);
     }
+
     @GetMapping("/all")
-    public List<SubjectTeacherDto> getSubjectTeacherDto(){
+    public List<SubjectTeacherDto> getSubjectTeacherDto() {
         return subjectService.getAllSubjectTeachers();
     }
 }

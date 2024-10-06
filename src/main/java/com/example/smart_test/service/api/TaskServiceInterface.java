@@ -16,6 +16,5 @@ public interface TaskServiceInterface {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<TaskDto> getAllTasks();
 
-
-
+    //List<TaskDto> getFindTask();
 }

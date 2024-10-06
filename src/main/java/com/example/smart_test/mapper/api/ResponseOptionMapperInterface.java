@@ -5,5 +5,6 @@ import com.example.smart_test.dto.ResponseOptionDto;
 
 public interface ResponseOptionMapperInterface {
     public ResponseOptionDto toDTO(ResponseOption entity);
+
     public ResponseOption toEntity(ResponseOptionDto dto);
 }

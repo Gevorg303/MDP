@@ -13,18 +13,22 @@ import java.util.List;
 public class TestController {
     @Autowired
     private TestServiceInterface testService;
+
     @PostMapping("/add")
-    public TestDto addTest(@RequestBody TestDto testDto){
+    public TestDto addTest(@RequestBody TestDto testDto) {
         return testService.addTestDto(testDto);
     }
+
     @DeleteMapping("/delete")
-    public void  deleteTest(@RequestBody TestDto testDto){
+    public void deleteTest(@RequestBody TestDto testDto) {
         testService.deleteTestDto(testDto);
     }
+
     @GetMapping("/all")
-    public List<TestDto> getAllTest(){
+    public List<TestDto> getAllTest() {
         return testService.getAllTestDto();
     }
+
     /*Вывод информации про конкретную тему*/
     @PostMapping("/get")
     public TestDto getTestById(@RequestBody TestDto testDto) {

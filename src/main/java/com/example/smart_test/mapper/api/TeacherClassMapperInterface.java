@@ -5,6 +5,7 @@ import com.example.smart_test.dto.TeacherClassDto;
 
 public interface TeacherClassMapperInterface {
     public TeacherClassDto toDto(TeacherClass entity);
+
     public TeacherClass toEntity(TeacherClassDto dto);
 
 }

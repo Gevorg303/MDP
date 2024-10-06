@@ -37,12 +37,13 @@ public class TestServiceImpl implements TestServiceInterface {
         try {
             List<Test> tests = testRepository.findAll();
             return tests.stream()
-                .map(testMapper::toDto)
-                .collect(Collectors.toList());
+                    .map(testMapper::toDto)
+                    .collect(Collectors.toList());
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при получении всех тестов: " + e.getMessage(), e);
         }
     }
+
     @Override
     public TestDto getTestById(Long id) {
         try {

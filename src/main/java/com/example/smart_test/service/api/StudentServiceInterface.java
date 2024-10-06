@@ -16,5 +16,6 @@ public interface StudentServiceInterface {
     List<UserDto> getAllStudent();
 
     UserDto getStudentByLogin(UserDto dto);
+
     Boolean checkPasswordByLogin(UserDto dto);
 }

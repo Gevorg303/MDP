@@ -8,11 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface SubjectTeacherServiceInterface {
-    public SubjectTeacherDto addSubjectTeacherDto(SubjectTeacherDto dto);
+    SubjectTeacherDto addSubjectTeacherDto(SubjectTeacherDto dto);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void deleteSubjectTeacherDto(SubjectTeacherDto dto);
+    void deleteSubjectTeacherDto(SubjectTeacherDto dto);
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<SubjectTeacherDto> getAllSubjectTeachers();
+    List<SubjectTeacherDto> getAllSubjectTeachers();
 }
