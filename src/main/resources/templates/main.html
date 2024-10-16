@@ -41,25 +41,45 @@
 
         <br>
         <label id="labelitemName" for="itemName">Название предмета</label>
-        <input type="text" id="itemName" placeholder="">
-        </br>
+        <input type="text" id="itemName" placeholder="" onblur="validate(this, 'errorItemName')">
+        <span id="errorItemName"></span>
+        <br>
         <label id="labelitemDescription" for="itemDescription">Описание предмета</label>
-        <input type="text" id="itemDescription" placeholder="">
-        </br>
+        <input type="text" id="itemDescription" placeholder="" onblur="validate(this, 'errorItemDescription')">
+        <span id="errorItemDescription"></span>
+        <br>
         <label id="labelselectClass" for="selectClass">Выберите класс</label>
         <select id="selectClass">
         </select>
         <br>
-        <label  id="labelselectSubject" for="selectSubject">Выберите предмет</label>
-            <select id="selectSubject">
-
-            </select>
-
+        <label id="labelselectSubject" for="selectSubject">Выберите предмет</label>
+        <select id="selectSubject">
+        </select>
         <br>
-        <button id="confirmAction">Подтвердить</button>
+        <button id="confirmAction" disabled>Подтвердить</button>
     </div>
 </div>
+<script>
+function validate(field, errorFieldId) {
+    if (field.value.trim() === '') {
+        field.style.borderColor = 'red';
+        document.getElementById(errorFieldId).innerText = 'Поле не должно состоять из одних пробелов.';
+        document.getElementById('confirmAction').disabled = true;
+    } else {
+        field.style.borderColor = 'green';
+        document.getElementById(errorFieldId).innerText = '';
+        document.getElementById('confirmAction').disabled = false;
+    }
+}
 
+document.getElementById('itemName').addEventListener('input', function() {
+    validate(this, 'errorItemName');
+});
+
+document.getElementById('itemDescription').addEventListener('input', function() {
+    validate(this, 'errorItemDescription');
+});
+</script>
 </body>
 
 <footer>

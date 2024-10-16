@@ -42,8 +42,8 @@
         </label>
 
         <br>
-        <label id="labelitemName" for="itemName">Название предмета</label>
-        <input type="text" id="itemName" placeholder="Название темы">
+        <label id="labelitemName" for="itemName">Название темы</label>
+        <input type="text" id="itemName" placeholder="Название темы" onblur="validate(this, 'errorItemName')">
         <br>
         <label  id="labelselectTheme" for="selectTheme">Выберите тему</label>
         <select id="selectTheme">
@@ -53,7 +53,27 @@
         <button id="confirmAction">Подтвердить</button>
     </div>
 </div>
+<script>
+function validate(field, errorFieldId) {
+    if (field.value.trim() === '') {
+        field.style.borderColor = 'red';
+        document.getElementById(errorFieldId).innerText = 'Поле не должно состоять из одних пробелов.';
+        document.getElementById('confirmAction').disabled = true;
+    } else {
+        field.style.borderColor = 'green';
+        document.getElementById(errorFieldId).innerText = '';
+        document.getElementById('confirmAction').disabled = false;
+    }
+}
 
+document.getElementById('itemName').addEventListener('input', function() {
+    validate(this, 'errorItemName');
+});
+
+document.getElementById('itemDescription').addEventListener('input', function() {
+    validate(this, 'errorItemDescription');
+});
+</script>
 
 </body>
 <script src="../js/theme.js"></script>

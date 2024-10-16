@@ -6,14 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "учитель_образовательное_учрежден")
+@Table(name = "пользователь_образовательное_учр")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TeacherEducationalInstitution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "идентификатор_учитель_образовате")
+    @Column(name = "идентификатор_пользователь_образ")
     private Long id;
 
     @ManyToOne
